@@ -1,15 +1,14 @@
-- id: "emotion_recognition"
-  title: "Efficient deep neural networks for edge computing"
+- id: "recognition"
+  title: "Efficient Deep Neural Networks for Edge Computing"
   venue: "IEEE EDGE 2019"
-  description: "This paper proposes a novel idea of combination filter pruning with tensor decomposition to reduce the computational complexity of deep neural networks."
+  description: "This paper proposes a novel idea of combining filter pruning with tensor decomposition to reduce the computational complexity of deep neural networks."
   project_page: "https://doi.org/10.1109/TAFFC.2022.1234567"
   arxiv: "https://ieeexplore.ieee.org/abstract/document/8812185/"
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - "Mohammed Alnemari"
-    - "Nader Bagherzadeh"
-  awards: [Best Paper Award]
+    - "mohammed_alnemari"
+  awards: ["Best Paper Award"]
 
 - id: "storage_efficient_ensemble"
   title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized Convolutional Neural Networks"
@@ -21,12 +20,12 @@
   image_mouseover: "ensemble_after.mp4"
   authors:
     - "HJ Kim"
-    - "Mohammed Alnemari"
-    - "Nader Bagherzadeh"
+    - "mohammed_alnemari"
+    - "nader_bagherzadeh"
   awards: []
 
 - id: "two_stage_efficient_cnn"
-  title: "A Two-Stage Efficient 3-D CNN Framework for EEG Based Emotion Recognition"
+  title: "A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition"
   venue: "IEEE International Conference on Industrial Technology (ICIT)"
   description: "This paper proposes a novel two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while keeping the model size small and computationally efficient."
   project_page: "https://arxiv.org/abs/2208.00883"
@@ -34,9 +33,9 @@
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - "Mohammed Alnemari"
-    - "Ye Qiao"
-    - "Nader Bagherzadeh"
+    - "mohammed_alnemari"
+    - "ye_qiao"
+    - "nader_bagherzadeh"
   awards: []
 
 - id: "integration_low_cost_eeg"
