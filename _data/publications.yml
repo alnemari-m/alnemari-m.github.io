@@ -7,8 +7,8 @@
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - mohammed_alnemari
-    - nader_bagherzadeh
+    - "mohammed_alnemari"
+    - "nader_bagherzadeh"
   awards: [Best Paper Award]
 
 - id: "storage_efficient_ensemble"
@@ -20,9 +20,9 @@
   image: "ensemble_before.jpg"
   image_mouseover: "ensemble_after.mp4"
   authors:
-    - HJ Kim
-    - mohammed_alnemari
-    - nader_bagherzadeh
+    - "HJ Kim"
+    - "mohammed_alnemari"
+    - "nader_bagherzadeh"
   awards: []
 
 - id: "two_stage_efficient_cnn"
@@ -30,16 +30,16 @@
   venue: "IEEE International Conference on Industrial Technology (ICIT)"
   description: "This paper proposes a novel two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while keeping the model size small and computationally efficient."
   project_page: "https://arxiv.org/abs/2208.00883"
-  arxiv: "2208.00883"
+  arxiv: ""
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - mohammed_alnemari
-    - ye_qiao
-    - nader_bagherzadeh
+    - "mohammed_alnemari"
+    - "ye_qiao"
+    - "nader_bagherzadeh"
   awards: []
 
-- id: integration_low_cost_eeg
+- id: "integration_low_cost_eeg"
   title: "Integration of a Low-Cost EEG Headset with The Internet of Things"
   venue: "University of California, Irvine, 2017"
   description: "This Master thesis focuses on integrating low-cost EEG headsets with IoT devices to control electronic devices through brain signals."
@@ -61,6 +61,6 @@
   image: "neural_network_embedded_systems_before.jpg"
   image_mouseover: "neural_network_embedded_systems_after.mp4"
   authors:
-    - "Mohammed Alnemarix"
+    - "Mohammed Alnemari"
   awards: [ ]
 
