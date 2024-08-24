@@ -9,7 +9,6 @@
   authors:
     - "mohammed_alnemari"
   awards: ["Best Paper Award"]
-
 - id: "storage_efficient_ensemble"
   title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized Convolutional Neural Networks"
   venue: "PeerJ Computer Science, 2022"
@@ -25,7 +24,7 @@
   awards: []
 
 - id: "two_stage_efficient_cnn"
-  title: "A Two Stage Efficient 3D CNN Framework for EEG-Based Emotion Recognition"
+  title: "A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition"
   venue: "IEEE International Conference on Industrial Technology (ICIT)"
   description: "This paper proposes a novel two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while keeping the model size small and computationally efficient."
   project_page: "https://arxiv.org/abs/2208.00883"
