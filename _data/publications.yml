@@ -71,9 +71,7 @@
   image: "ensemble_before.jpg"
   image_mouseover: "ensemble_after.mp4"
   authors:
-    - "HJ Kim"
-    - "mohammed_alnemari"
-    - "nader_bagherzadeh"
+    - "Mohammed Alnemari"
   awards: []
 
 - id: "two_stage_efficient_cnn"
