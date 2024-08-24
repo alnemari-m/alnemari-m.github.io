@@ -9,6 +9,7 @@
   authors:
     - "mohammed_alnemari"
   awards: ["Best Paper Award"]
+
 - id: "storage_efficient_ensemble"
   title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized Convolutional Neural Networks"
   venue: "PeerJ Computer Science, 2022"
