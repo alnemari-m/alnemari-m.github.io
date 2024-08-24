@@ -7,7 +7,8 @@
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - "mohammed_alnemari"
+    - "Mohammed Alnemari"
+    - "Nader Bagherzadeh"
   awards: [Best Paper Award]
 
 - id: "storage_efficient_ensemble"
@@ -20,8 +21,8 @@
   image_mouseover: "ensemble_after.mp4"
   authors:
     - "HJ Kim"
-    - "mohammed_alnemari"
-    - "nader_bagherzadeh"
+    - "Mohammed Alnemari"
+    - "Nader Bagherzadeh"
   awards: []
 
 - id: "two_stage_efficient_cnn"
@@ -33,9 +34,9 @@
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - "mohammed_alnemari"
-    - "ye_qiao"
-    - "nader_bagherzadeh"
+    - "Mohammed Alnemari"
+    - "Ye Qiao"
+    - "Nader Bagherzadeh"
   awards: []
 
 - id: "integration_low_cost_eeg"
@@ -48,7 +49,6 @@
   image_mouseover: "eeg_after.mp4"
   authors:
     - "Mohammed Alnemari"
-
   awards: []
 
 - id: "neural_networks_for_embedded_systems"
