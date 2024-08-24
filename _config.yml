@@ -29,9 +29,9 @@ description: >-
   [Ali Farhadi](https://homes.cs.washington.edu/~ali/) and
   [Steve Seitz](https://homes.cs.washington.edu/~seitz/).
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://keunhong.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: KeunhongP
-github_username: keunhong
+url: "https://alnemari-m.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: alnemari-m
+github_username: alnemari-m
 google_scholar: HVZb-5oAAAAJ
 google_analytics: G-MFWSBLRKG0
 
