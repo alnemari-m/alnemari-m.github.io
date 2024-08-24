@@ -1,42 +1,47 @@
-- company: Google
-  description: Research Scientist
-  dates: "May 2022 - Jan 2024"
-  location: San Francisco, CA
-
-- company: Google
+- company: University of Tabuk & Collaborative Institutions
   description: >-
-    Research Intern on the <a href="https://blog.google/technology/research/project-starline/">Project Starline</a> team.
-    Worked on <a href="https://nerfies.github.io">Nerfies</a> and <ahref="https://hypernerf.github.io">HyperNeRF</a>.
-  dates: "Jun 2020 - Sep 2021"
-  location: Seattle, WA
+    Team Leader for the WaterBacteria Research Initiative. Led a diverse team of 15 assistant professors from the USA and Saudi Arabia. Developed innovative methods using bacteria to produce water and irrigate arid soil in Saudi Arabia, utilizing AI to modify bacterial genetics for resilience in harsh environments.
+  dates: "Aug 2022 - Jan 2023"
+  location: Saudi Arabia
 
-- company: NVIDIA
+- company: University of Tabuk & University of California, Irvine
   description: >-
-    Robotics Research Intern at the <a href="https://www.nvidia.com/en-us/research/robotics/">Seattle Robotics Lab</a>.
-    Worked on <a href="https://latentfusion.github.io">LatentFusion</a>.
-  dates: "Jul 2019 - Nov 2019"
-  location: Seattle, WA
+    Team Member for the RRAM Crossbar Based Analog In-Memory AI Accelerator SOC Chip project. Designed an AI accelerator SOC chip with non-volatile resistive memory devices, custom analog crossbar computational units, and fault-tolerant neural network architectures.
+  dates: "Mar 2023 - Dec 2023"
+  location: Saudi Arabia
 
-- company: Amazon
-  description: >- 
-    Applied Scientist Intern on the <a href="https://amazon.com/go">Amazon Go</a> team.
-    Worked on human activity detection.
-  dates: "Jul 2017 - Sep 2017"
-  location: Seattle, WA
-
-- company: Ministry of National Defense, Cyber Command
-  description: Software Engineer (mandatory military service). Worked on network monitoring software.
-  dates: "Oct 2013 - Jul 2015"
-  location: Seoul, Korea
-
-- company: Google
-  description: Software Engineering Intern. Create document conversion system for Google Cloud Print.
-  dates: "May 2013 - Aug 2013"
-  location: Mountain View, CA
-
-- company: Qualcomm
+- company: University of Tabuk "Industrial Innovation and Robotic Center" & Neom
   description: >-
-    Software Engineering Intern. Optimized performance of JGit, reducing push times from hours to seconds.
-    Implemented multi-master support for Gerrit Code Review.
-  dates: "May 2012 - Aug 2012"
-  location: Boulder, CO
+    Project Leader for AI and Life Sciences Research Initiative. Led a team of 4 researchers in collaboration with Neom to develop innovative AI solutions for life sciences applications, managing project timelines with agile methodologies.
+  dates: "Oct 2022 - Mar 2023"
+  location: Saudi Arabia
+
+- company: University of Tabuk "Artificial Intelligence and Sensing Technologies Center (AIST)" & Saline Water Conversion Corporation (SWCC)
+  description: >-
+    Member Team for Jellyfish Detection and Desalination Plant Risk Assessment. Used AI and sensing techniques to detect jellyfish emergence, analyze environmental data, and assess risks at desalination plants.
+  dates: "Feb 2023 - Present"
+  location: Saudi Arabia
+
+- company: Interdigital
+  description: >-
+    AI Engineer Intern (Remote). Collaborated on building deep neural network models for image and video compression, optimizing neural network performance for compression efficiency.
+  dates: "Mar 2021 - Dec 2021"
+  location: Remote
+
+- company: Nuaris (Contract)
+  description: >-
+    Chief Technology Officer (Remote). Led the technology team to develop innovative solutions, overseeing the deployment of new products and aligning technology with business goals.
+  dates: "Jul 2023 - Nov 2023"
+  location: Remote
+
+- company: Tokyo Institute of Technology
+  description: >-
+    Summer Program Participant. Developed deep neural network models for self-driving cars and integrated AI solutions into FPGA for real-time processing in automotive systems.
+  dates: "Summer 2018"
+  location: Tokyo, Japan
+
+- company: National Taiwan University Lab (Sponsored by Intel)
+  description: >-
+    Summer Researcher. Developed an IoT framework, including an EEG module, as part of a research project sponsored by Intel, and integrated IoT components effectively.
+  dates: "Summer 2016"
+  location: Taipei, Taiwan

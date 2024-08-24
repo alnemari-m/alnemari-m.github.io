@@ -1,11 +1,31 @@
-- name: University of Washington 
+- name: University of California, Irvine
   description: >-
-    Ph. D in Computer Science, advised by <a href="https://smseitz.com">Steven M. Seitz</a> and
-    <a href="https://homes.cs.washington.edu/~ali/">Ali Farhadi</a>.<br />
-    Supported by Samsung Scholarship 2015-2020 ($50,000/year for 5 years)
-  dates: Fall 2015 - Spring 2022
+    Ph.D. in Computer Engineering, focused on "Efficient Deep Neural Networks on the Edge".<br />
+    Investigated the use and combination of pruning, quantization, and tensor decomposition methods on state-of-the-art deep neural network models.<br />
+    Developed techniques for efficient deployment of neural networks on low-energy-constrained devices.
+  dates: "Sep 2017 - Feb 2022"
 
-- name: University of Illinois at Urbana-Champaign
+- name: University of California, Irvine
   description: >-
-    B.S. in Computer Science, advised by <a href="https://dhoiem.cs.illinois.edu/">Derek Hoiem</a>.
-  dates: Fall 2009 - Spring 2013
+    Master’s degree in Computer Engineering.<br />
+    Thesis: "Integration of a Low Cost EEG Headset with the Internet of Things Framework".<br />
+    Integrated hardware of vital signals with IoT framework (EEG, EMG, heart beating).
+  dates: "2014 - 2016"
+
+- name: University of Pennsylvania
+  description: >-
+    Non-Degree Program in Philosophy, Politics, and Economics.
+  dates: "2012 - 2014"
+
+- name: Taif University
+  description: >-
+    Bachelor’s degree in Computer Engineering.<br />
+    Graduated with second honors.
+  dates: "2006 - 2011"
+
+- name: University of Southern California
+  description: >-
+    Certificate in Game Programming, Computer Games and Programming Skills.<br />
+    Lead programmer on a 3D game using Unreal Engine 5 as a group project.<br />
+    Designed and programmed a 2D game using Unity as an individual project.
+  dates: "Jan 2024 - May 2024"
