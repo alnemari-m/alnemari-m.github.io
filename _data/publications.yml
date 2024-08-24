@@ -20,8 +20,7 @@
   image_mouseover: "ensemble_after.mp4"
   authors:
     - "HJ Kim"
-    - "mohammed_alnemari"
-    - "nader_bagherzadeh"
+
   awards: []
 
 - id: "two_stage_efficient_cnn"
@@ -33,9 +32,8 @@
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - "mohammed_alnemari"
-    - "ye_qiao"
-    - "nader_bagherzadeh"
+    - "Mohammed Alnemari"
+
   awards: []
 
 - id: "integration_low_cost_eeg"
@@ -62,28 +60,3 @@
     - "Mohammed Alnemari"
   awards: [ ]
 
-- id: "storage_efficient_ensemble"
-  title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized Convolutional Neural Networks"
-  venue: "PeerJ Computer Science, 2022"
-  description: "This paper proposes a storage-efficient ensemble classification to overcome the low inference accuracy of binary neural networks (BNNs)."
-  project_page: "https://doi.org/10.7717/peerj-cs.924"
-  arxiv: ""
-  image: "ensemble_before.jpg"
-  image_mouseover: "ensemble_after.mp4"
-  authors:
-    - "Mohammed Alnemari"
-  awards: []
-
-- id: "two_stage_efficient_cnn"
-  title: "A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition"
-  venue: "IEEE International Conference on Industrial Technology (ICIT)"
-  description: "This paper proposes a novel two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while keeping the model size small and computationally efficient."
-  project_page: "https://arxiv.org/abs/2208.00883"
-  arxiv: ""
-  image: "cnn_before.jpg"
-  image_mouseover: "cnn_after.mp4"
-  authors:
-    - "mohammed_alnemari"
-    - "ye_qiao"
-    - "nader_bagherzadeh"
-  awards: []
