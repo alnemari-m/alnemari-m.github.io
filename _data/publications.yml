@@ -8,7 +8,6 @@
   image_mouseover: "cnn_after.mp4"
   authors:
     - "mohammed_alnemari"
-    - "nader_bagherzadeh"
   awards: [Best Paper Award]
 
 - id: "storage_efficient_ensemble"
