@@ -1,20 +1,19 @@
 - id: "emotion_recognition"
-  title: "A Two-Stage Efficient 3-D CNN Framework for EEG Based Emotion Recognition"
-  venue: "IEEE Transactions on Affective Computing, 2022"
-  description: "This paper proposes a novel two-stage framework for emotion recognition using EEG data."
+  title: "Efficient deep neural networks for edge computing"
+  venue: "IEEE EDGE 2019"
+  description: "This paper proposes a novel idea of combination filter pruning with tensor decomposition to reduce the computational complexity of deep neural networks."
   project_page: "https://doi.org/10.1109/TAFFC.2022.1234567"
-  arxiv: "2208.00883"
+  arxiv: "https://ieeexplore.ieee.org/abstract/document/8812185/"
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
     - mohammed_alnemari
-    - ye_qiao
     - nader_bagherzadeh
-  awards: []
+  awards: [Best Paper Award]
 
 - id: "storage_efficient_ensemble"
   title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized Convolutional Neural Networks"
-  venue: PeerJ Computer Science, 2022
+  venue: "PeerJ Computer Science, 2022"
   description: "This paper proposes a storage-efficient ensemble classification to overcome the low inference accuracy of binary neural networks (BNNs)."
   project_page: "https://doi.org/10.7717/peerj-cs.924"
   arxiv: ""
@@ -28,7 +27,7 @@
 
 - id: "two_stage_efficient_cnn"
   title: "A Two-Stage Efficient 3-D CNN Framework for EEG Based Emotion Recognition"
-  venue: arXiv, 2022
+  venue: "IEEE International Conference on Industrial Technology (ICIT)"
   description: "This paper proposes a novel two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while keeping the model size small and computationally efficient."
   project_page: "https://arxiv.org/abs/2208.00883"
   arxiv: "2208.00883"
@@ -42,8 +41,8 @@
 
 - id: integration_low_cost_eeg
   title: "Integration of a Low-Cost EEG Headset with The Internet of Things"
-  venue: University of California, Irvine, 2021
-  description: "This project focuses on integrating low-cost EEG headsets with IoT devices to control electronic devices through brain signals."
+  venue: "University of California, Irvine, 2017"
+  description: "This Master thesis focuses on integrating low-cost EEG headsets with IoT devices to control electronic devices through brain signals."
   project_page: "https://escholarship.org/uc/item/1bh7k9cg"
   arxiv: ""
   image: "eeg_before.jpg"
@@ -55,7 +54,7 @@
 
 - id: "neural_networks_for_embedded_systems"
   title: "Efficient Deep Neural Networks on the Edge"
-  venue: "ProQuest, 2024"
+  venue: "University of California, Irvine, 2022"
   description: "This dissertation explores the application of neural networks in embedded systems, highlighting techniques for optimizing performance and efficiency in resource-constrained environments."
   project_page: "https://www.proquest.com/openview/654e3810c6fcfedc5a0b6f7049e049cf/1?pq-origsite=gscholar&cbl=18750&diss=y"
   arxiv: ""
