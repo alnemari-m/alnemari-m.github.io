@@ -20,20 +20,17 @@
 
 title: Mohammed Alnemari
 name: Mohammed Alnemari
-position: Research Scientist 
-email: dp9jalxhq@mozmail.com
+position: Assistant Professor in Computer Engineering
+email: your-email@example.com
 description: >-
-  I am a researcher in 3D computer vision, generative models, and computer graphics. I was previously a research scientist at [Google](https://ai.google/research/).
+  I am an Assistant Professor in Computer Engineering specializing in AI, TinyML, and Deep Learning. I have a strong background in computer vision, game development, and research in neural networks. My work focuses on advancing technology in areas like IoT, healthcare, and education.
 
-  I received my Ph.D from the [University of Washington](https://grail.cs.washington.edu/) in 2021 where I was advised by
-  [Ali Farhadi](https://homes.cs.washington.edu/~ali/) and
-  [Steve Seitz](https://homes.cs.washington.edu/~seitz/).
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://alnemari-m.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://yourwebsite.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: alnemari-m
 github_username: alnemari-m
-google_scholar: HVZb-5oAAAAJ
-google_analytics: G-MFWSBLRKG0
+google_scholar: ukW6rG0AAAAJ
+google_analytics: Your-Google-Analytics-ID
 
 # Build settings
 theme: minima
@@ -41,7 +38,7 @@ plugins:
   - jekyll-feed
 
 sass:
-  style: compressed
+  style: compress
 
 # Exclude from processing.
 # The following items will not be processed, by default.
