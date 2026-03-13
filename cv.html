@@ -6,169 +6,353 @@ layout: null
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammed Alnemari — CV</title>
+  <title>Mohammed Alnemari // CV</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root {
-      --bg: #0a0a0f;
-      --bg-card: #12121a;
-      --text: #e4e4e7;
-      --text-muted: #9ca3af;
-      --accent: #6366f1;
-      --accent-light: #818cf8;
-      --border: #1e1e2e;
-      --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+      --bg: #0a0a0c;
+      --bg2: #0d0d12;
+      --bg-card: #0e0e16;
+      --bg-terminal: #0c0c14;
+      --text: #c9d1d9;
+      --text-bright: #e6edf3;
+      --text-dim: #6e7681;
+      --green: #00ff9d;
+      --green-dim: #00cc7d;
+      --cyan: #00d4ff;
+      --purple: #b388ff;
+      --amber: #ffb300;
+      --rose: #ff6b9d;
+      --border: #1a1a2e;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
-      padding: 3rem 2rem;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Scanline overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 157, 0.015) 2px,
+        rgba(0, 255, 157, 0.015) 4px
+      );
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Grid overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(0,255,157,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,157,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 999;
     }
 
     .cv-container {
       max-width: 900px;
       margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Header */
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--green);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid rgba(0,255,157,0.2);
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .back-link:hover {
+      background: rgba(0,255,157,0.1);
+      border-color: var(--green);
+      box-shadow: 0 0 12px rgba(0,255,157,0.15);
+    }
+
+    /* Terminal header */
+    .terminal-window {
+      background: var(--bg-terminal);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .terminal-bar .dot.r { background: #ff5f57; }
+    .terminal-bar .dot.y { background: #febc2e; }
+    .terminal-bar .dot.g { background: #28c840; }
+    .terminal-bar .title {
+      margin-left: 8px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    .terminal-content {
+      padding: 1.5rem;
+    }
+
+    /* CV Header */
     .cv-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 2px solid var(--accent);
+      margin-bottom: 0.5rem;
       flex-wrap: wrap;
       gap: 2rem;
     }
 
     .cv-header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
       line-height: 1.1;
+      color: var(--text-bright);
     }
-
-    .cv-header h1 .gradient {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .cv-header h1 .green { color: var(--green); }
 
     .cv-header .subtitle {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-top: 0.3rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      line-height: 1.6;
     }
+    .cv-header .subtitle span { color: var(--cyan); }
 
     .cv-header .links {
       text-align: right;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
-
-    .cv-header .links p {
-      margin-bottom: 0.3rem;
-    }
-
+    .cv-header .links p { margin-bottom: 0.4rem; }
     .cv-header .links a {
-      color: var(--accent-light);
+      color: var(--green);
       text-decoration: none;
+      transition: color 0.2s;
     }
+    .cv-header .links a:hover { color: var(--cyan); }
+    .cv-header .links i { width: 18px; text-align: center; margin-right: 0.3rem; color: var(--text-dim); }
 
-    .cv-header .links a:hover { text-decoration: underline; }
-    .cv-header .links i { width: 20px; text-align: center; margin-right: 0.3rem; }
-
-    /* Sections */
+    /* Section headers */
     .cv-section {
-      margin-bottom: 2.5rem;
+      margin-bottom: 0.5rem;
     }
+    .cv-section:last-child { margin-bottom: 0; }
 
-    .cv-section h2 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--accent-light);
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       margin-bottom: 1.2rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
+    }
+    .section-header .prompt {
+      color: var(--green);
+      font-size: 0.85rem;
+    }
+    .section-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--cyan);
+    }
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
     }
 
+    /* CV entries */
     .cv-entry {
       display: flex;
       justify-content: space-between;
       margin-bottom: 1.2rem;
+      padding: 0.8rem 1rem;
+      border-left: 2px solid var(--border);
+      transition: border-color 0.3s, background 0.3s;
       gap: 2rem;
+    }
+    .cv-entry:hover {
+      border-left-color: var(--green);
+      background: rgba(0,255,157,0.02);
     }
 
     .cv-entry .main { flex: 1; }
 
     .cv-entry .main strong {
-      font-size: 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
       display: block;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.2rem;
+      color: var(--text-bright);
     }
 
     .cv-entry .main .role {
-      color: var(--accent-light);
-      font-size: 0.92rem;
+      color: var(--purple);
+      font-size: 0.82rem;
       font-weight: 500;
     }
 
     .cv-entry .main .desc {
-      color: var(--text-muted);
-      font-size: 0.88rem;
+      color: var(--text-dim);
+      font-size: 0.82rem;
       margin-top: 0.3rem;
     }
 
     .cv-entry .meta {
       text-align: right;
       white-space: nowrap;
-      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    /* Publication entries */
+    .pub-entry {
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 2px solid var(--border);
+      transition: all 0.3s;
+    }
+    .pub-entry:hover {
+      border-left-color: var(--green);
+      background: rgba(0,255,157,0.02);
+    }
+    .pub-entry .pub-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-bright);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .pub-entry .pub-title:hover { color: var(--green); }
+    .pub-entry .pub-venue {
+      color: var(--purple);
       font-size: 0.8rem;
-      color: var(--text-muted);
+    }
+    .pub-entry .pub-desc {
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      margin-top: 0.25rem;
     }
 
     .award-tag {
       display: inline-block;
-      background: rgba(245,158,11,0.15);
-      color: #f59e0b;
-      font-size: 0.78rem;
+      background: rgba(255,179,0,0.12);
+      color: var(--amber);
+      font-size: 0.72rem;
       font-weight: 600;
       padding: 0.15rem 0.5rem;
-      border-radius: 4px;
+      border-radius: 3px;
+      border: 1px solid rgba(255,179,0,0.25);
       margin-top: 0.3rem;
     }
 
-    .back-link {
-      display: inline-flex;
-      align-items: center;
+    /* Research interests */
+    .interests-grid {
+      display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
-      color: var(--accent-light);
-      text-decoration: none;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
+    }
+    .interest-tag {
+      padding: 0.35rem 0.8rem;
+      font-size: 0.78rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      transition: all 0.3s;
+    }
+    .interest-tag:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: rgba(0,255,157,0.05);
     }
 
-    .back-link:hover { text-decoration: underline; }
+    /* Footer prompt */
+    .cv-footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    .cv-footer .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--green);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 700px) {
+      .cv-container { padding: 1rem; }
+      .cv-header { flex-direction: column; }
+      .cv-header .links { text-align: left; }
+      .cv-header h1 { font-size: 1.6rem; }
+      .cv-entry { flex-direction: column; gap: 0.3rem; }
+      .cv-entry .meta { text-align: left; }
+    }
 
     @media print {
-      body { background: #fff; color: #111; padding: 1rem; font-size: 9pt; }
-      .cv-header h1, .cv-header h1 .gradient { color: #111; -webkit-text-fill-color: #111; }
-      .cv-section h2 { color: #333; }
+      body { background: #fff; color: #111; }
+      body::before, body::after { display: none; }
+      .cv-header h1, .cv-header h1 .green { color: #111; }
+      .section-header h2 { color: #333; }
+      .section-header .prompt { color: #666; }
       .cv-entry .main .role { color: #555; }
-      .cv-entry .main .desc { color: #555; }
+      .pub-entry .pub-venue { color: #555; }
+      .cv-entry, .pub-entry { border-left-color: #ccc; }
       .back-link { display: none; }
       a { color: #333; }
+      .terminal-bar { background: #f5f5f5; }
+      .terminal-window { border-color: #ddd; }
+      .interest-tag { border-color: #ddd; color: #333; }
     }
   </style>
 </head>
@@ -176,73 +360,155 @@ layout: null
 
 <div class="cv-container">
 
-  <a href="./" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  <a href="./" class="back-link"><i class="fas fa-arrow-left"></i> cd ~/home</a>
 
-  <div class="cv-header">
-    <div>
-      <h1>Mohammed <span class="gradient">Alnemari</span></h1>
-      <p class="subtitle">Assistant Professor & Chair, Computer Engineering<br>University of Tabuk &middot; AIST Research Center</p>
+  <div class="terminal-window">
+    <div class="terminal-bar">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+      <span class="title">cat curriculum_vitae.log</span>
     </div>
-    <div class="links">
-      <p><a href="https://alnemari-m.github.io/"><i class="fas fa-globe"></i> alnemari-m.github.io</a></p>
-      <p><a href="mailto:mnemari@ut.edu.sa"><i class="fas fa-envelope"></i> mnemari@ut.edu.sa</a></p>
-      <p><a href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ"><i class="ai ai-google-scholar"></i> Google Scholar</a></p>
-      <p><a href="https://orcid.org/0000-0002-5971-6703"><i class="ai ai-orcid"></i> 0000-0002-5971-6703</a></p>
-      <p><a href="https://github.com/alnemari-m"><i class="fab fa-github"></i> alnemari-m</a></p>
+    <div class="terminal-content">
+
+      <div class="cv-header">
+        <div>
+          <h1>Mohammed <span class="green">Alnemari</span></h1>
+          <p class="subtitle">
+            <span>$</span> Assistant Professor & Chair, Computer Engineering<br>
+            <span>$</span> University of Tabuk · AIST Research Center
+          </p>
+        </div>
+        <div class="links">
+          <p><a href="https://alnemari-m.github.io/"><i class="fas fa-globe"></i> alnemari-m.github.io</a></p>
+          <p><a href="mailto:mnemari@ut.edu.sa"><i class="fas fa-envelope"></i> mnemari@ut.edu.sa</a></p>
+          <p><a href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ"><i class="ai ai-google-scholar"></i> Google Scholar</a></p>
+          <p><a href="https://orcid.org/0000-0002-5971-6703"><i class="ai ai-orcid"></i> 0000-0002-5971-6703</a></p>
+          <p><a href="https://github.com/alnemari-m"><i class="fab fa-github"></i> alnemari-m</a></p>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="cv-section">
-    <h2>Education</h2>
-    {% for school in site.data.education %}
-    <div class="cv-entry">
-      <div class="main">
-        <strong>{{ school.name }}</strong>
-        <div class="desc">{{ school.description }}</div>
-      </div>
-      <div class="meta">{{ school.dates }}</div>
+  <!-- Education -->
+  <div class="terminal-window">
+    <div class="terminal-bar">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+      <span class="title">education.log</span>
     </div>
-    {% endfor %}
-  </div>
-
-  <div class="cv-section">
-    <h2>Experience & Projects</h2>
-    {% for job in site.data.employment %}
-    <div class="cv-entry">
-      <div class="main">
-        <strong>{{ job.company }}</strong>
-        <div class="desc">{{ job.description }}</div>
-      </div>
-      <div class="meta">
-        {{ job.dates }}<br>{{ job.location }}
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-
-  <div class="cv-section">
-    <h2>Selected Publications</h2>
-    {% for pub in site.data.publications %}
-    <div class="cv-entry">
-      <div class="main">
-        <strong><a href="{{ pub.project_page }}" style="color: var(--text); text-decoration: none;">{{ pub.title }}</a></strong>
-        <div class="role">{{ pub.venue }}</div>
-        <div class="desc">{{ pub.description }}</div>
-        {% for award in pub.awards %}
-        <span class="award-tag"><i class="fas fa-trophy"></i> {{ award }}</span>
+    <div class="terminal-content">
+      <div class="cv-section">
+        <div class="section-header">
+          <span class="prompt">$</span>
+          <h2>Education</h2>
+        </div>
+        {% for school in site.data.education %}
+        <div class="cv-entry">
+          <div class="main">
+            <strong>{{ school.name }}</strong>
+            <div class="desc">{{ school.description }}</div>
+          </div>
+          <div class="meta">{{ school.dates }}</div>
+        </div>
         {% endfor %}
       </div>
     </div>
-    {% endfor %}
   </div>
 
-  <div class="cv-section">
-    <h2>Research Interests</h2>
-    <div class="cv-entry">
-      <div class="main">
-        <div class="desc">Edge AI & TinyML &middot; Neural Network Compression (Pruning, Quantization, Tensor Decomposition) &middot; Hardware-Software Co-Design &middot; Conformal Prediction for ML &middot; Embedded Deep Learning &middot; Brain-Computer Interfaces &middot; Computer Vision</div>
+  <!-- Experience -->
+  <div class="terminal-window">
+    <div class="terminal-bar">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+      <span class="title">experience.log</span>
+    </div>
+    <div class="terminal-content">
+      <div class="cv-section">
+        <div class="section-header">
+          <span class="prompt">$</span>
+          <h2>Experience & Projects</h2>
+        </div>
+        {% for job in site.data.employment %}
+        <div class="cv-entry">
+          <div class="main">
+            <strong>{{ job.company }}</strong>
+            <div class="desc">{{ job.description }}</div>
+          </div>
+          <div class="meta">
+            {{ job.dates }}<br>{{ job.location }}
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
+  </div>
+
+  <!-- Publications -->
+  <div class="terminal-window">
+    <div class="terminal-bar">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+      <span class="title">publications --all | sort -r</span>
+    </div>
+    <div class="terminal-content">
+      <div class="cv-section">
+        <div class="section-header">
+          <span class="prompt">$</span>
+          <h2>Publications</h2>
+        </div>
+        {% for pub in site.data.publications %}
+        <div class="pub-entry">
+          <a href="{{ pub.project_page }}" class="pub-title">{{ pub.title }}</a>
+          <div class="pub-venue">{{ pub.venue }}</div>
+          {% if pub.description %}<div class="pub-desc">{{ pub.description }}</div>{% endif %}
+          {% for award in pub.awards %}
+          <span class="award-tag"><i class="fas fa-trophy"></i> {{ award }}</span>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Research Interests -->
+  <div class="terminal-window">
+    <div class="terminal-bar">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+      <span class="title">research_interests.conf</span>
+    </div>
+    <div class="terminal-content">
+      <div class="cv-section">
+        <div class="section-header">
+          <span class="prompt">$</span>
+          <h2>Research Interests</h2>
+        </div>
+        <div class="interests-grid">
+          <span class="interest-tag">Edge AI & TinyML</span>
+          <span class="interest-tag">Neural Network Compression</span>
+          <span class="interest-tag">Structured Pruning</span>
+          <span class="interest-tag">Quantization</span>
+          <span class="interest-tag">Tensor Decomposition</span>
+          <span class="interest-tag">HW-SW Co-Design</span>
+          <span class="interest-tag">Conformal Prediction</span>
+          <span class="interest-tag">Embedded Deep Learning</span>
+          <span class="interest-tag">Brain-Computer Interfaces</span>
+          <span class="interest-tag">Computer Vision</span>
+          <span class="interest-tag">Neural Scaling Laws</span>
+          <span class="interest-tag">Efficient Architectures</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-footer">
+    <span style="color: var(--green);">alnemari@tabuk</span>:<span style="color: var(--cyan);">~/cv</span>$ exit<span class="cursor"></span>
   </div>
 
 </div>
