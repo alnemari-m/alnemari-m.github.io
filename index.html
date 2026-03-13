@@ -138,7 +138,7 @@ layout: null
 
     .logo::before { content: '> '; opacity: 0.5; }
 
-    .nav-links { display: flex; gap: 0.2rem; }
+    .nav-links { display: flex; gap: 0.2rem; align-items: center; }
 
     .nav-links a {
       font-family: var(--mono);
@@ -159,6 +159,32 @@ layout: null
     }
 
     .nav-links a::before { content: './'; opacity: 0.4; font-size: 0.7rem; }
+
+    /* ══════════════════════════════════════════════
+       THEME TOGGLE
+    ══════════════════════════════════════════════ */
+    .theme-toggle {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.35rem 0.7rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-hover);
+      background: var(--bg-card);
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-left: 0.5rem;
+    }
+    .theme-toggle:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-glow);
+    }
+    .theme-toggle::before { content: ''; display: none; }
 
     /* ══════════════════════════════════════════════
        CONTAINERS & SECTIONS
@@ -973,6 +999,338 @@ layout: null
       .nav-links { display: none; }
       .pub-entry { grid-template-columns: 1fr; }
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       ██████████████████████████████████████████████████████████████
+       ARCH LINUX TMUX THEME
+       ██████████████████████████████████████████████████████████████
+    ══════════════════════════════════════════════════════════════ */
+    body.arch-theme {
+      --bg: #1a1b26;
+      --bg2: #1e1f2b;
+      --bg-card: #1f2030;
+      --bg-card-hover: #252638;
+      --bg-terminal: #16161e;
+      --text: #a9b1d6;
+      --text-bright: #c0caf5;
+      --text-dim: #565f89;
+      --text-muted: #3b3f5c;
+      --green: #1793d1;
+      --green-dim: #1280b8;
+      --green-glow: rgba(23,147,209,0.1);
+      --green-glow2: rgba(23,147,209,0.18);
+      --cyan: #7dcfff;
+      --cyan-dim: rgba(125,207,255,0.6);
+      --purple: #bb9af7;
+      --purple-glow: rgba(187,154,247,0.1);
+      --amber: #e0af68;
+      --rose: #f7768e;
+      --blue: #1793d1;
+      --border: rgba(23,147,209,0.12);
+      --border-hover: rgba(23,147,209,0.35);
+      --scanline: rgba(23,147,209,0.02);
+      font-family: var(--mono);
+    }
+
+    /* Hide hacker elements in arch mode */
+    body.arch-theme #matrix-rain,
+    body.arch-theme .scanlines,
+    body.arch-theme .grid-overlay,
+    body.arch-theme .portrait-scanline,
+    body.arch-theme .portrait-glitch,
+    body.arch-theme .glitch::before,
+    body.arch-theme .glitch::after {
+      display: none !important;
+    }
+
+    /* Tmux outer frame */
+    body.arch-theme .tmux-frame {
+      display: block;
+    }
+    .tmux-frame { display: none; }
+
+    body.arch-theme .tmux-frame {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      border: 2px solid #1793d1;
+      box-shadow: inset 0 0 80px rgba(23,147,209,0.03);
+    }
+
+    /* Tmux status bar - TOP */
+    body.arch-theme .tmux-top {
+      display: flex;
+    }
+    .tmux-top { display: none; }
+
+    body.arch-theme .tmux-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 101;
+      height: 24px;
+      background: #1793d1;
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      padding: 0 0.8rem;
+      gap: 0;
+    }
+
+    .tmux-top .tmux-tab {
+      padding: 0 0.8rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.15);
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
+    .tmux-top .tmux-tab.active {
+      background: #16161e;
+      color: #1793d1;
+    }
+    .tmux-top .tmux-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Tmux status bar - BOTTOM */
+    body.arch-theme .tmux-bottom {
+      display: flex;
+    }
+    .tmux-bottom { display: none; }
+
+    body.arch-theme .tmux-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 101;
+      height: 22px;
+      background: #1793d1;
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      padding: 0 0.8rem;
+      justify-content: space-between;
+    }
+
+    /* Arch theme nav adjustments */
+    body.arch-theme nav {
+      top: 24px;
+      background: rgba(26,27,38,0.92);
+      border-bottom-color: rgba(23,147,209,0.15);
+    }
+
+    body.arch-theme .logo {
+      color: #1793d1;
+      text-shadow: none;
+    }
+    body.arch-theme .logo::before { content: '[arch] '; color: #1793d1; opacity: 0.7; }
+
+    body.arch-theme .nav-links a::before { content: ''; }
+    body.arch-theme .nav-links a:hover {
+      color: #1793d1;
+      background: rgba(23,147,209,0.1);
+      text-shadow: none;
+    }
+
+    /* Arch theme hero */
+    body.arch-theme #hero { padding-top: 5rem; }
+
+    body.arch-theme .hero-name {
+      font-family: var(--mono);
+      font-weight: 800;
+    }
+    body.arch-theme .hero-name .last {
+      color: #1793d1;
+      text-shadow: none;
+    }
+
+    body.arch-theme .hero-status {
+      text-shadow: none;
+    }
+    body.arch-theme .status-dot {
+      background: #1793d1;
+      box-shadow: 0 0 8px #1793d1;
+    }
+
+    body.arch-theme .section-tag {
+      text-shadow: none;
+    }
+    body.arch-theme .section-tag::before { content: '$'; }
+
+    body.arch-theme .section-title {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 2.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Arch portrait — cleaner, no frame effects */
+    body.arch-theme .portrait-frame {
+      border-color: #1793d1;
+      animation: none;
+      opacity: 0.8;
+    }
+    body.arch-theme .portrait-frame::before,
+    body.arch-theme .portrait-frame::after {
+      background: #1793d1;
+      box-shadow: none;
+    }
+    body.arch-theme .corner::before,
+    body.arch-theme .corner::after {
+      background: #1793d1;
+    }
+    body.arch-theme .portrait-label { color: #565f89; }
+
+    /* Arch stat terminals */
+    body.arch-theme .stat-terminal {
+      border-radius: 0;
+      border-color: rgba(23,147,209,0.2);
+    }
+    body.arch-theme .stat-terminal-bar {
+      background: rgba(23,147,209,0.08);
+    }
+    body.arch-theme .stat-terminal-bar .dots span:nth-child(1) { background: #f7768e; }
+    body.arch-theme .stat-terminal-bar .dots span:nth-child(2) { background: #e0af68; }
+    body.arch-theme .stat-terminal-bar .dots span:nth-child(3) { background: #9ece6a; }
+    body.arch-theme .stat-value {
+      color: #1793d1;
+      text-shadow: none;
+    }
+    body.arch-theme .stat-value.amber { color: #e0af68; text-shadow: none; }
+    body.arch-theme .stat-value.cyan { color: #7dcfff; text-shadow: none; }
+    body.arch-theme .stat-value.purple { color: #bb9af7; text-shadow: none; }
+
+    /* Arch cards */
+    body.arch-theme .r-card,
+    body.arch-theme .lab-card,
+    body.arch-theme .preprint-entry {
+      border-radius: 0;
+      border-color: rgba(23,147,209,0.15);
+    }
+    body.arch-theme .r-card:hover,
+    body.arch-theme .lab-card:hover {
+      border-color: rgba(23,147,209,0.4);
+      box-shadow: 0 0 20px rgba(23,147,209,0.05);
+    }
+    body.arch-theme .r-card::before {
+      background: linear-gradient(90deg, transparent, #1793d1, transparent);
+    }
+
+    /* Arch publications */
+    body.arch-theme .pub-terminal {
+      border-radius: 0;
+    }
+    body.arch-theme .pub-yr {
+      text-shadow: none;
+    }
+
+    /* Arch buttons */
+    body.arch-theme .btn-primary {
+      background: #1793d1;
+      border-color: #1793d1;
+      box-shadow: none;
+    }
+    body.arch-theme .btn-primary:hover {
+      box-shadow: 0 0 20px rgba(23,147,209,0.3);
+      background: #1a9fe0;
+    }
+    body.arch-theme .btn-ghost:hover {
+      border-color: #1793d1;
+      color: #1793d1;
+      background: rgba(23,147,209,0.1);
+    }
+
+    /* Arch skills */
+    body.arch-theme .skill {
+      border-radius: 0;
+    }
+    body.arch-theme .skill:hover {
+      border-color: #1793d1;
+      color: #1793d1;
+      box-shadow: none;
+    }
+    body.arch-theme .skill.core {
+      border-color: rgba(23,147,209,0.3);
+      color: #1793d1;
+    }
+
+    /* Arch contact */
+    body.arch-theme .contact-item {
+      border-radius: 0;
+    }
+    body.arch-theme .contact-item:hover {
+      border-color: #1793d1;
+      box-shadow: none;
+    }
+    body.arch-theme .contact-item i { color: #1793d1; }
+
+    /* Arch footer */
+    body.arch-theme footer {
+      margin-bottom: 22px;
+      border-top-color: rgba(23,147,209,0.15);
+    }
+
+    /* Arch selection */
+    body.arch-theme ::selection {
+      background: #1793d1;
+      color: #fff;
+    }
+
+    /* Arch hero bio */
+    body.arch-theme .hero-bio {
+      border-left-color: #1793d1;
+    }
+
+    /* Arch theme toggle active state */
+    body.arch-theme .theme-toggle {
+      border-color: #1793d1;
+      color: #1793d1;
+      background: rgba(23,147,209,0.1);
+    }
+
+    /* Arch divider */
+    body.arch-theme .divider {
+      background: linear-gradient(to right, transparent, rgba(23,147,209,0.3), transparent);
+    }
+
+    /* Pane border simulation */
+    body.arch-theme section {
+      border-left: 1px solid rgba(23,147,209,0.08);
+      border-right: 1px solid rgba(23,147,209,0.08);
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+
+    /* Arch responsive */
+    @media (max-width: 900px) {
+      body.arch-theme .tmux-top .tmux-right { display: none; }
+      body.arch-theme .section-title { font-size: 1.8rem; }
+    }
+
+    /* Smooth theme transition */
+    body, body * {
+      transition-property: background-color, color, border-color, box-shadow;
+      transition-duration: 0.4s;
+      transition-timing-function: ease;
+    }
+    /* Exempt animations from theme transition */
+    .reveal, .stat-terminal, .r-card, .lab-card, .btn, .skill, .contact-item, .preprint-entry {
+      transition: all 0.4s;
+    }
   </style>
 </head>
 
@@ -981,6 +1339,24 @@ layout: null
 <canvas id="matrix-rain"></canvas>
 <div class="scanlines"></div>
 <div class="grid-overlay"></div>
+
+<!-- Tmux frame (arch only) -->
+<div class="tmux-frame"></div>
+<div class="tmux-top">
+  <div class="tmux-tab active">0:alnemari</div>
+  <div class="tmux-tab">1:research</div>
+  <div class="tmux-tab">2:publications</div>
+  <div class="tmux-tab">3:lab</div>
+  <div class="tmux-right">
+    <span><i class="fab fa-linux"></i> arch linux</span>
+    <span id="tmux-clock"></span>
+    <span>alnemari@tabuk</span>
+  </div>
+</div>
+<div class="tmux-bottom">
+  <span>[0] 0:bash* 1:vim 2:htop 3:python</span>
+  <span>"alnemari@arch" <span id="tmux-date"></span></span>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -994,6 +1370,9 @@ layout: null
       <a href="#skills">skills</a>
       <a href="#contact">contact</a>
       <a href="cv.html" style="color:var(--green);">cv</a>
+      <button class="theme-toggle" id="themeToggle" title="Toggle Arch Linux theme">
+        <i class="fab fa-linux"></i> <span id="toggleLabel">arch</span>
+      </button>
     </div>
   </div>
 </nav>
@@ -1384,6 +1763,7 @@ layout: null
       <span class="skill">Raspberry Pi</span>
       <span class="skill">NVIDIA Jetson</span>
       <span class="skill">IoT Frameworks</span>
+      <span class="skill">Arch Linux</span>
       <span class="skill">Git</span>
       <span class="skill">REST APIs</span>
       <span class="skill">Benchmarking</span>
@@ -1446,6 +1826,11 @@ layout: null
   window.addEventListener('resize', init);
 
   function draw() {
+    if (document.body.classList.contains('arch-theme')) {
+      ctx.clearRect(0, 0, c.width, c.height);
+      requestAnimationFrame(draw);
+      return;
+    }
     ctx.fillStyle = 'rgba(10,10,12,0.08)';
     ctx.fillRect(0, 0, c.width, c.height);
     ctx.fillStyle = '#00ff9d';
@@ -1493,6 +1878,40 @@ window.addEventListener('scroll', () => {
     }
   }
   setTimeout(type, 1500);
+})();
+
+// ═══ THEME TOGGLE ═══
+(function() {
+  const btn = document.getElementById('themeToggle');
+  const label = document.getElementById('toggleLabel');
+  const saved = localStorage.getItem('theme');
+
+  if (saved === 'arch') {
+    document.body.classList.add('arch-theme');
+    label.textContent = 'hacker';
+  }
+
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('arch-theme');
+    const isArch = document.body.classList.contains('arch-theme');
+    label.textContent = isArch ? 'hacker' : 'arch';
+    localStorage.setItem('theme', isArch ? 'arch' : 'hacker');
+  });
+})();
+
+// ═══ TMUX CLOCK (arch theme) ═══
+(function() {
+  function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+    const date = now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    const clockEl = document.getElementById('tmux-clock');
+    const dateEl = document.getElementById('tmux-date');
+    if (clockEl) clockEl.textContent = time;
+    if (dateEl) dateEl.textContent = date + ' ' + time;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
 })();
 </script>
 
