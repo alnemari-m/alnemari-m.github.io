@@ -6,70 +6,118 @@ layout: null
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammed Alnemari — Edge AI Researcher</title>
-  <meta name="description" content="Assistant Professor & Chair, Computer Engineering, University of Tabuk. 11 publications. Edge AI, TinyML, Neural Network Compression, HW-SW Co-Design.">
+  <title>Mohammed Alnemari // Edge AI Researcher</title>
+  <meta name="description" content="Assistant Professor & Chair, Computer Engineering, University of Tabuk. 12+ publications. Edge AI, TinyML, Neural Network Compression.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    @font-face {
+      font-family: 'Pixelated';
+      src: local('JetBrains Mono');
+    }
+
     :root {
-      --bg: #050508;
-      --bg2: #0a0a12;
-      --bg-card: #0f0f1a;
-      --bg-card-hover: #161625;
-      --text: #e8e8ef;
-      --text-dim: #8b8ba3;
-      --text-muted: #5c5c7a;
-      --accent: #6366f1;
-      --accent2: #8b5cf6;
-      --accent3: #a78bfa;
-      --cyan: #22d3ee;
-      --emerald: #34d399;
-      --gold: #fbbf24;
-      --rose: #fb7185;
-      --border: rgba(99,102,241,0.12);
-      --border-bright: rgba(99,102,241,0.3);
-      --glow: rgba(99,102,241,0.08);
+      --bg: #0a0a0c;
+      --bg2: #0d0d12;
+      --bg-card: #0e0e16;
+      --bg-card-hover: #131320;
+      --bg-terminal: #0c0c14;
+      --text: #c9d1d9;
+      --text-bright: #e6edf3;
+      --text-dim: #7d8590;
+      --text-muted: #484f58;
+      --green: #00ff9d;
+      --green-dim: #00cc7d;
+      --green-glow: rgba(0,255,157,0.08);
+      --green-glow2: rgba(0,255,157,0.15);
+      --cyan: #00e5ff;
+      --cyan-dim: rgba(0,229,255,0.6);
+      --purple: #a855f7;
+      --purple-glow: rgba(168,85,247,0.1);
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --blue: #3b82f6;
+      --border: rgba(0,255,157,0.08);
+      --border-hover: rgba(0,255,157,0.25);
+      --scanline: rgba(0,255,157,0.03);
+      --mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --sans: 'Space Grotesk', 'Inter', sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    ::selection { background: var(--accent); color: #fff; }
+    ::selection { background: var(--green); color: #000; }
 
-    /* ═══════════ PARTICLE CANVAS ═══════════ */
-    #particles {
+    /* ══════════════════════════════════════════════
+       MATRIX RAIN CANVAS
+    ══════════════════════════════════════════════ */
+    #matrix-rain {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════════════
+       SCANLINE OVERLAY
+    ══════════════════════════════════════════════ */
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        var(--scanline) 2px,
+        var(--scanline) 4px
+      );
+    }
+
+    /* ══════════════════════════════════════════════
+       GRID OVERLAY
+    ══════════════════════════════════════════════ */
+    .grid-overlay {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,255,157,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,157,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
 
-    /* ═══════════ NAVIGATION ═══════════ */
+    /* ══════════════════════════════════════════════
+       NAVIGATION — Terminal Style
+    ══════════════════════════════════════════════ */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 100;
-      padding: 0.8rem 0;
-      backdrop-filter: blur(24px) saturate(1.8);
-      background: rgba(5,5,8,0.7);
+      padding: 0.6rem 0;
+      backdrop-filter: blur(20px) saturate(1.5);
+      background: rgba(10,10,12,0.85);
       border-bottom: 1px solid var(--border);
-      transition: all 0.4s cubic-bezier(.4,0,.2,1);
     }
 
-    nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+    nav.scrolled { border-bottom-color: var(--border-hover); }
 
     .nav-inner {
       max-width: 1200px;
@@ -81,557 +129,726 @@ layout: null
     }
 
     .logo {
-      font-weight: 900;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--accent), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--green);
+      text-shadow: 0 0 20px rgba(0,255,157,0.3);
     }
 
-    .nav-links { display: flex; gap: 0.3rem; }
+    .logo::before { content: '> '; opacity: 0.5; }
+
+    .nav-links { display: flex; gap: 0.2rem; }
 
     .nav-links a {
+      font-family: var(--mono);
       color: var(--text-dim);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      padding: 0.4rem 0.9rem;
-      border-radius: 8px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
       transition: all 0.3s;
+      letter-spacing: 0.5px;
     }
 
     .nav-links a:hover {
-      color: var(--text);
-      background: var(--glow);
+      color: var(--green);
+      background: var(--green-glow);
+      text-shadow: 0 0 8px rgba(0,255,157,0.4);
     }
 
-    /* ═══════════ CONTAINERS ═══════════ */
+    .nav-links a::before { content: './'; opacity: 0.4; font-size: 0.7rem; }
+
+    /* ══════════════════════════════════════════════
+       CONTAINERS & SECTIONS
+    ══════════════════════════════════════════════ */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     section { padding: 7rem 0; }
 
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
       font-weight: 600;
-      color: var(--cyan);
+      color: var(--green);
       text-transform: uppercase;
       letter-spacing: 4px;
       margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
       gap: 0.8rem;
+      text-shadow: 0 0 15px rgba(0,255,157,0.3);
     }
 
-    .section-label::before {
-      content: '';
-      width: 30px;
-      height: 2px;
-      background: linear-gradient(to right, var(--cyan), transparent);
+    .section-tag::before {
+      content: '//';
+      opacity: 0.4;
     }
 
     .section-title {
-      font-size: 2.8rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
+      font-family: var(--sans);
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       line-height: 1.1;
-      margin-bottom: 1rem;
+      color: var(--text-bright);
     }
 
     .section-desc {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--text-dim);
-      max-width: 650px;
+      max-width: 620px;
+      margin-top: 1rem;
       line-height: 1.8;
-      margin-bottom: 3rem;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .hl { color: var(--green); }
+    .hl-cyan { color: var(--cyan); }
+    .hl-purple { color: var(--purple); }
+    .hl-amber { color: var(--amber); }
 
-    /* ═══════════ HERO ═══════════ */
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
     #hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 5rem;
-      position: relative;
+      padding-top: 4rem;
     }
 
-    .hero-grid {
+    .hero-layout {
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 320px 1fr;
       gap: 5rem;
       align-items: center;
     }
 
-    /* Animated portrait */
-    .portrait-wrapper {
+    /* Glitch portrait */
+    .portrait-container {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 280px;
+      height: 280px;
       margin: 0 auto;
     }
 
-    .portrait-ring {
+    .portrait-frame {
       position: absolute;
-      inset: -8px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--accent), var(--cyan), var(--accent2), var(--accent));
-      animation: spin 8s linear infinite;
+      inset: -3px;
+      border: 2px solid var(--green);
+      border-radius: 4px;
+      opacity: 0.6;
+      animation: frame-pulse 3s ease-in-out infinite alternate;
     }
 
-    .portrait-ring-inner {
+    .portrait-frame::before {
+      content: '';
       position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--accent2), var(--emerald), var(--cyan), var(--accent2));
-      animation: spin 12s linear infinite reverse;
-      opacity: 0.5;
+      top: -8px;
+      left: 10px;
+      right: 10px;
+      height: 1px;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .portrait-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 10px;
+      right: 10px;
+      height: 1px;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+    }
+
+    @keyframes frame-pulse {
+      0% { opacity: 0.4; border-color: var(--green); }
+      100% { opacity: 0.8; border-color: var(--cyan); }
+    }
 
     .portrait-img {
-      position: relative;
-      z-index: 2;
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--bg);
+      border-radius: 2px;
+      position: relative;
+      z-index: 1;
+      filter: saturate(0.85) contrast(1.05);
     }
 
-    .portrait-glow {
+    .portrait-scanline {
       position: absolute;
-      inset: -40px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
-      z-index: 0;
-      animation: pulse-glow 4s ease-in-out infinite alternate;
+      inset: 0;
+      z-index: 2;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,255,157,0.03) 3px,
+        rgba(0,255,157,0.03) 6px
+      );
+      border-radius: 2px;
+      pointer-events: none;
     }
 
-    @keyframes pulse-glow {
-      0% { opacity: 0.5; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.1); }
-    }
-
-    /* Floating orbit dots */
-    .orbit-dot {
+    .portrait-glitch {
       position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--green);
+      opacity: 0;
       z-index: 3;
+      animation: scanline-move 4s linear infinite;
     }
 
-    .orbit-dot:nth-child(1) {
-      background: var(--cyan);
-      box-shadow: 0 0 15px var(--cyan);
-      animation: orbit1 6s linear infinite;
+    @keyframes scanline-move {
+      0% { top: 0; opacity: 0; }
+      5% { opacity: 0.15; }
+      95% { opacity: 0.15; }
+      100% { top: 100%; opacity: 0; }
     }
 
-    .orbit-dot:nth-child(2) {
-      background: var(--accent2);
-      box-shadow: 0 0 15px var(--accent2);
-      animation: orbit2 8s linear infinite;
+    /* Corner decorations */
+    .corner { position: absolute; width: 20px; height: 20px; z-index: 3; }
+    .corner::before, .corner::after { content: ''; position: absolute; background: var(--green); }
+    .corner-tl { top: -1px; left: -1px; }
+    .corner-tl::before { top: 0; left: 0; width: 20px; height: 2px; }
+    .corner-tl::after { top: 0; left: 0; width: 2px; height: 20px; }
+    .corner-tr { top: -1px; right: -1px; }
+    .corner-tr::before { top: 0; right: 0; width: 20px; height: 2px; }
+    .corner-tr::after { top: 0; right: 0; width: 2px; height: 20px; }
+    .corner-bl { bottom: -1px; left: -1px; }
+    .corner-bl::before { bottom: 0; left: 0; width: 20px; height: 2px; }
+    .corner-bl::after { bottom: 0; left: 0; width: 2px; height: 20px; }
+    .corner-br { bottom: -1px; right: -1px; }
+    .corner-br::before { bottom: 0; right: 0; width: 20px; height: 2px; }
+    .corner-br::after { bottom: 0; right: 0; width: 2px; height: 20px; }
+
+    .portrait-label {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
-    .orbit-dot:nth-child(3) {
-      background: var(--emerald);
-      box-shadow: 0 0 15px var(--emerald);
-      animation: orbit3 10s linear infinite;
-    }
-
-    @keyframes orbit1 {
-      0% { top: -5px; left: 50%; }
-      25% { top: 50%; left: calc(100% + 5px); }
-      50% { top: calc(100% + 5px); left: 50%; }
-      75% { top: 50%; left: -5px; }
-      100% { top: -5px; left: 50%; }
-    }
-
-    @keyframes orbit2 {
-      0% { top: 50%; left: calc(100% + 15px); }
-      25% { top: calc(100% + 15px); left: 50%; }
-      50% { top: 50%; left: -15px; }
-      75% { top: -15px; left: 50%; }
-      100% { top: 50%; left: calc(100% + 15px); }
-    }
-
-    @keyframes orbit3 {
-      0% { top: calc(100% + 10px); left: 50%; }
-      25% { top: 50%; left: -10px; }
-      50% { top: -10px; left: 50%; }
-      75% { top: 50%; left: calc(100% + 10px); }
-      100% { top: calc(100% + 10px); left: 50%; }
-    }
-
-    .hero-badge {
-      display: inline-flex;
+    /* Hero text */
+    .hero-status {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+      display: flex;
       align-items: center;
       gap: 0.6rem;
-      background: rgba(34,211,238,0.08);
-      border: 1px solid rgba(34,211,238,0.2);
-      color: var(--cyan);
-      padding: 0.4rem 1.1rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0,255,157,0.3);
     }
 
-    .hero-badge .pulse-dot {
-      width: 8px; height: 8px;
-      background: var(--emerald);
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
       border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 12px var(--green);
+      animation: blink 2s ease-in-out infinite;
     }
 
-    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+    /* Glitch name */
     .hero-name {
-      font-size: 4rem;
+      font-family: var(--sans);
+      font-size: 4.2rem;
       font-weight: 900;
       letter-spacing: -0.04em;
-      line-height: 1.05;
-      margin-bottom: 1rem;
+      line-height: 1;
+      margin-bottom: 1.2rem;
+      position: relative;
+      color: var(--text-bright);
     }
 
-    .hero-titles {
-      margin-bottom: 1.5rem;
+    .hero-name .first { display: block; }
+
+    .hero-name .last {
+      display: block;
+      color: var(--green);
+      text-shadow: 0 0 40px rgba(0,255,157,0.3), 0 0 80px rgba(0,255,157,0.1);
+      position: relative;
     }
 
-    .hero-titles p {
-      font-size: 1.1rem;
+    /* Glitch effect */
+    .glitch {
+      position: relative;
+    }
+
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .glitch::before {
+      color: var(--cyan);
+      z-index: -1;
+      animation: glitch-1 3s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      color: var(--rose);
+      z-index: -2;
+      animation: glitch-2 2s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-1 {
+      0%, 92% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      93% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 1px); }
+      94% { clip-path: inset(50% 0 20% 0); transform: translate(3px, -1px); }
+      95% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      96% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 2px); }
+      97%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    }
+
+    @keyframes glitch-2 {
+      0%, 90% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      91% { clip-path: inset(40% 0 30% 0); transform: translate(2px, -1px); }
+      92% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 1px); }
+      93%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    }
+
+    .hero-role {
+      font-family: var(--mono);
+      font-size: 0.9rem;
       color: var(--text-dim);
-      font-weight: 500;
+      margin-bottom: 0.3rem;
     }
 
-    .hero-titles .highlight {
-      color: var(--accent3);
+    .hero-role .val { color: var(--cyan); }
+
+    .hero-affiliation {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
     }
 
     .hero-bio {
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--text-dim);
       line-height: 1.85;
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
       max-width: 560px;
+      border-left: 2px solid var(--green);
+      padding-left: 1.2rem;
     }
 
-    .hero-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .hero-bio strong { color: var(--text); }
+
+    .hero-buttons { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.7rem 1.4rem;
-      border-radius: 12px;
-      font-size: 0.88rem;
+      padding: 0.65rem 1.3rem;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
       font-weight: 600;
       text-decoration: none;
-      transition: all 0.4s cubic-bezier(.4,0,.2,1);
+      transition: all 0.3s;
       border: 1px solid transparent;
-      position: relative;
-      overflow: hidden;
+      letter-spacing: 0.3px;
     }
 
-    .btn-glow {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
+    .btn-primary {
+      background: var(--green);
+      color: #000;
+      border-color: var(--green);
+      box-shadow: 0 0 20px rgba(0,255,157,0.15);
     }
 
-    .btn-glow:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(99,102,241,0.4);
+    .btn-primary:hover {
+      box-shadow: 0 0 35px rgba(0,255,157,0.35), 0 4px 20px rgba(0,255,157,0.2);
+      transform: translateY(-2px);
     }
 
-    .btn-outline {
+    .btn-ghost {
       background: transparent;
       color: var(--text);
-      border-color: var(--border-bright);
+      border-color: var(--border-hover);
     }
 
-    .btn-outline:hover {
-      background: var(--glow);
-      border-color: var(--accent);
-      transform: translateY(-3px);
+    .btn-ghost:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-glow);
+      transform: translateY(-2px);
     }
 
-    /* ═══════════ IMPACT NUMBERS ═══════════ */
-    .impact-strip {
+    /* ══════════════════════════════════════════════
+       TERMINAL STATS
+    ══════════════════════════════════════════════ */
+    .terminal-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
-    .impact-card {
-      background: var(--bg-card);
+    .stat-terminal {
+      background: var(--bg-terminal);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      position: relative;
+      border-radius: 6px;
       overflow: hidden;
       transition: all 0.4s;
     }
 
-    .impact-card::before {
+    .stat-terminal:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 0 30px rgba(0,255,157,0.06);
+      transform: translateY(-4px);
+    }
+
+    .stat-terminal-bar {
+      background: rgba(0,255,157,0.06);
+      padding: 0.35rem 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat-terminal-bar .dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .stat-terminal-bar .dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .stat-terminal-bar .dots span:nth-child(1) { background: #ff5f57; }
+    .stat-terminal-bar .dots span:nth-child(2) { background: #febc2e; }
+    .stat-terminal-bar .dots span:nth-child(3) { background: #28c840; }
+
+    .stat-terminal-bar .label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    .stat-terminal-body {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--green);
+      text-shadow: 0 0 30px rgba(0,255,157,0.2);
+      line-height: 1;
+    }
+
+    .stat-value.amber { color: var(--amber); text-shadow: 0 0 30px rgba(245,158,11,0.2); }
+    .stat-value.cyan { color: var(--cyan); text-shadow: 0 0 30px rgba(0,229,255,0.2); }
+    .stat-value.purple { color: var(--purple); text-shadow: 0 0 30px rgba(168,85,247,0.2); }
+
+    .stat-desc {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ══════════════════════════════════════════════
+       RESEARCH GRID — Terminal Cards
+    ══════════════════════════════════════════════ */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .r-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.8rem;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .r-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--cyan));
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity 0.4s;
     }
 
-    .impact-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--border-bright);
-      box-shadow: 0 20px 50px rgba(99,102,241,0.1);
+    .r-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(0,255,157,0.04);
     }
 
-    .impact-card:hover::before { opacity: 1; }
+    .r-card:hover::before { opacity: 1; }
 
-    .impact-number {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 0.5rem;
+    .r-card-icon {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--green);
+      padding: 0.3rem 0.6rem;
+      border: 1px solid rgba(0,255,157,0.2);
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      background: var(--green-glow);
     }
 
-    .impact-label {
+    .r-card:nth-child(2) .r-card-icon { color: var(--cyan); border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.06); }
+    .r-card:nth-child(3) .r-card-icon { color: var(--purple); border-color: rgba(168,85,247,0.2); background: var(--purple-glow); }
+    .r-card:nth-child(4) .r-card-icon { color: var(--amber); border-color: rgba(245,158,11,0.2); background: rgba(245,158,11,0.06); }
+    .r-card:nth-child(5) .r-card-icon { color: var(--rose); border-color: rgba(244,63,94,0.2); background: rgba(244,63,94,0.06); }
+    .r-card:nth-child(6) .r-card-icon { color: var(--blue); border-color: rgba(59,130,246,0.2); background: rgba(59,130,246,0.06); }
+
+    .r-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text-bright);
+    }
+
+    .r-card p {
       font-size: 0.85rem;
       color: var(--text-dim);
-      font-weight: 500;
+      line-height: 1.65;
     }
 
-    /* ═══════════ RESEARCH AREAS (HEX GRID) ═══════════ */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .research-card {
-      background: var(--bg-card);
+    /* ══════════════════════════════════════════════
+       PUBLICATIONS — Log Style
+    ══════════════════════════════════════════════ */
+    .pub-terminal {
+      background: var(--bg-terminal);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.2rem;
-      transition: all 0.5s cubic-bezier(.4,0,.2,1);
-      position: relative;
+      border-radius: 8px;
       overflow: hidden;
     }
 
-    .research-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      background: radial-gradient(ellipse at bottom, var(--glow), transparent);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .research-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--border-bright);
-      box-shadow: 0 25px 60px rgba(99,102,241,0.12);
-    }
-
-    .research-card:hover::after { opacity: 1; }
-
-    .research-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+    .pub-terminal-header {
+      background: rgba(0,255,157,0.04);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 1.3rem;
-      position: relative;
-      z-index: 1;
+      gap: 0.6rem;
     }
 
-    .research-card:nth-child(1) .research-icon { background: rgba(99,102,241,0.12); color: var(--accent3); }
-    .research-card:nth-child(2) .research-icon { background: rgba(34,211,238,0.12); color: var(--cyan); }
-    .research-card:nth-child(3) .research-icon { background: rgba(52,211,153,0.12); color: var(--emerald); }
-    .research-card:nth-child(4) .research-icon { background: rgba(251,191,36,0.12); color: var(--gold); }
-    .research-card:nth-child(5) .research-icon { background: rgba(251,113,133,0.12); color: var(--rose); }
-    .research-card:nth-child(6) .research-icon { background: rgba(139,92,246,0.12); color: var(--accent2); }
+    .pub-terminal-header .dots { display: flex; gap: 5px; }
+    .pub-terminal-header .dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .pub-terminal-header .dots span:nth-child(1) { background: #ff5f57; }
+    .pub-terminal-header .dots span:nth-child(2) { background: #febc2e; }
+    .pub-terminal-header .dots span:nth-child(3) { background: #28c840; }
 
-    .research-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      position: relative;
-      z-index: 1;
+    .pub-terminal-header .title {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: 0.5rem;
     }
 
-    .research-card p {
-      font-size: 0.88rem;
-      color: var(--text-dim);
-      line-height: 1.65;
-      position: relative;
-      z-index: 1;
+    .pub-terminal-body {
+      padding: 1.5rem;
     }
 
-    /* ═══════════ PUBLICATIONS ═══════════ */
-    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
-
-    .pub-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.6rem 2rem;
+    .pub-entry {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(0,255,157,0.05);
       display: grid;
-      grid-template-columns: 60px 1fr;
+      grid-template-columns: 70px 1fr;
       gap: 1.5rem;
-      align-items: start;
-      transition: all 0.4s;
+      transition: all 0.3s;
     }
 
-    .pub-card:hover {
-      border-color: var(--border-bright);
-      transform: translateX(6px);
-      box-shadow: -6px 0 30px rgba(99,102,241,0.08);
-    }
+    .pub-entry:last-child { border-bottom: none; }
+    .pub-entry:hover { background: rgba(0,255,157,0.02); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; }
 
-    .pub-year {
-      font-family: 'JetBrains Mono', monospace;
+    .pub-yr {
+      font-family: var(--mono);
       font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent3);
-      padding-top: 0.3rem;
+      font-weight: 700;
+      color: var(--green);
+      padding-top: 0.2rem;
+      text-shadow: 0 0 10px rgba(0,255,157,0.3);
     }
 
-    .pub-title {
-      font-size: 1.05rem;
+    .pub-title-text {
+      font-size: 1rem;
       font-weight: 700;
+      color: var(--text-bright);
       margin-bottom: 0.3rem;
       line-height: 1.4;
     }
 
-    .pub-title a { color: var(--text); text-decoration: none; transition: color 0.3s; }
-    .pub-title a:hover { color: var(--cyan); }
+    .pub-title-text a { color: inherit; text-decoration: none; transition: color 0.3s; }
+    .pub-title-text a:hover { color: var(--green); }
 
-    .pub-authors { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0.3rem; }
-    .pub-authors .me { color: var(--text); font-weight: 600; }
+    .pub-authors-text { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.2rem; }
+    .pub-authors-text .me { color: var(--green); font-weight: 600; }
 
-    .pub-venue {
-      font-size: 0.82rem;
+    .pub-venue-text {
+      font-family: var(--mono);
+      font-size: 0.75rem;
       color: var(--text-muted);
       font-style: italic;
     }
 
-    .pub-meta {
-      display: flex;
-      gap: 0.6rem;
-      margin-top: 0.6rem;
-      flex-wrap: wrap;
-    }
+    .pub-tags { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
 
-    .pub-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+    .ptag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
       font-weight: 600;
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
     }
 
-    .pub-tag-award { background: rgba(251,191,36,0.12); color: var(--gold); }
-    .pub-tag-citations { background: rgba(34,211,238,0.1); color: var(--cyan); }
-    .pub-tag-link { background: var(--glow); color: var(--accent3); text-decoration: none; transition: all 0.3s; }
-    .pub-tag-link:hover { background: rgba(99,102,241,0.2); }
+    .ptag-award { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .ptag-cite { background: rgba(0,229,255,0.08); color: var(--cyan); }
+    .ptag-new { background: rgba(0,255,157,0.1); color: var(--green); animation: blink 2s infinite; }
+    .ptag-link {
+      background: rgba(0,255,157,0.06);
+      color: var(--green-dim);
+      text-decoration: none;
+      border: 1px solid rgba(0,255,157,0.15);
+      transition: all 0.3s;
+    }
+    .ptag-link:hover { background: var(--green-glow2); border-color: var(--green); }
 
-    /* ═══════════ LAB / ACTIVE PROJECTS ═══════════ */
+    /* ══════════════════════════════════════════════
+       PREPRINTS (arXiv auto-fetch)
+    ══════════════════════════════════════════════ */
+    .preprint-entry {
+      padding: 1.2rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .preprint-entry:hover {
+      border-color: var(--border-hover);
+      transform: translateX(4px);
+    }
+
+    /* ══════════════════════════════════════════════
+       LAB CARDS
+    ══════════════════════════════════════════════ */
     .lab-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
     .lab-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem;
+      border-radius: 6px;
+      padding: 1.8rem;
       transition: all 0.4s;
       position: relative;
     }
 
     .lab-card:hover {
-      border-color: var(--border-bright);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(99,102,241,0.1);
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
 
-    .lab-status {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 600;
+    .lab-badge {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 0.25rem 0.7rem;
-      border-radius: 6px;
+      letter-spacing: 2px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
       display: inline-block;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
 
-    .lab-status-active { background: rgba(52,211,153,0.12); color: var(--emerald); }
-    .lab-status-collab { background: rgba(34,211,238,0.12); color: var(--cyan); }
+    .lab-badge-active { background: rgba(0,255,157,0.1); color: var(--green); border: 1px solid rgba(0,255,157,0.2); }
+    .lab-badge-collab { background: rgba(0,229,255,0.08); color: var(--cyan); border: 1px solid rgba(0,229,255,0.2); }
 
-    .lab-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .lab-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.65; }
+    .lab-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-bright); }
+    .lab-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
 
-    .lab-partners {
+    .lab-meta {
       margin-top: 1rem;
-      padding-top: 0.8rem;
+      padding-top: 0.7rem;
       border-top: 1px solid var(--border);
-      font-size: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
       color: var(--text-muted);
     }
 
-    .lab-partners strong { color: var(--text-dim); }
-
-    /* ═══════════ SKILLS CLOUD ═══════════ */
-    .skills-container {
+    /* ══════════════════════════════════════════════
+       SKILLS — Pixel Tags
+    ══════════════════════════════════════════════ */
+    .skills-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
+      gap: 0.5rem;
       justify-content: center;
+      max-width: 850px;
+      margin: 0 auto;
     }
 
-    .skill-chip {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+    .skill {
+      font-family: var(--mono);
+      font-size: 0.75rem;
       font-weight: 500;
-      padding: 0.5rem 1.1rem;
-      border-radius: 50px;
+      padding: 0.45rem 0.9rem;
+      border-radius: 3px;
       background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text-dim);
@@ -639,194 +856,248 @@ layout: null
       cursor: default;
     }
 
-    .skill-chip:hover {
-      border-color: var(--accent);
-      color: var(--text);
+    .skill:hover {
+      border-color: var(--green);
+      color: var(--green);
+      box-shadow: 0 0 15px rgba(0,255,157,0.08);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(99,102,241,0.1);
     }
 
-    .skill-chip.primary { border-color: rgba(99,102,241,0.3); color: var(--accent3); }
+    .skill.core { border-color: rgba(0,255,157,0.2); color: var(--green); }
 
-    /* ═══════════ CONTACT ═══════════ */
+    /* ══════════════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════════════ */
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem;
       max-width: 900px;
       margin: 0 auto;
     }
 
-    .contact-card {
+    .contact-item {
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 1.2rem 1.5rem;
+      padding: 1.1rem 1.4rem;
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 6px;
       text-decoration: none;
       color: var(--text);
       transition: all 0.3s;
+      font-family: var(--mono);
+      font-size: 0.85rem;
     }
 
-    .contact-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(99,102,241,0.1);
+    .contact-item:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0,255,157,0.06);
     }
 
-    .contact-card i {
-      font-size: 1.3rem;
-      color: var(--accent3);
-      width: 24px;
+    .contact-item i {
+      font-size: 1.2rem;
+      color: var(--green);
+      width: 20px;
       text-align: center;
     }
 
-    .contact-card .contact-info { font-size: 0.88rem; }
-    .contact-card .contact-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .contact-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: block;
+    }
 
-    /* ═══════════ FOOTER ═══════════ */
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
     footer {
       text-align: center;
       padding: 3rem 0;
       border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
     }
 
-    footer p { font-size: 0.8rem; color: var(--text-muted); }
-
-    /* ═══════════ DIVIDER ═══════════ */
+    /* ══════════════════════════════════════════════
+       DIVIDER
+    ══════════════════════════════════════════════ */
     .divider {
       height: 1px;
-      background: linear-gradient(to right, transparent, var(--border-bright), transparent);
+      background: linear-gradient(to right, transparent, var(--border-hover), transparent);
     }
 
-    /* ═══════════ ANIMATIONS ═══════════ */
+    /* ══════════════════════════════════════════════
+       TYPING CURSOR
+    ══════════════════════════════════════════════ */
+    .cursor { animation: cursor-blink 1s step-end infinite; }
+    @keyframes cursor-blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* ══════════════════════════════════════════════
+       REVEAL ANIMATIONS
+    ══════════════════════════════════════════════ */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
+      transform: translateY(35px);
+      transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94);
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
-    }
+    .stagger > *:nth-child(1) { transition-delay: 0s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.08s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.16s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.24s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.32s; }
+    .stagger > *:nth-child(6) { transition-delay: 0.40s; }
 
-    .reveal-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* Stagger children */
-    .stagger > * { transition-delay: calc(var(--i, 0) * 0.1s); }
-
-    /* ═══════════ RESPONSIVE ═══════════ */
+    /* ══════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════ */
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-      .portrait-wrapper { width: 220px; height: 220px; }
+      .hero-layout { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+      .portrait-container { width: 200px; height: 200px; }
       .hero-name { font-size: 2.8rem; }
+      .hero-bio { border-left: none; padding-left: 0; margin: 0 auto 2rem; text-align: left; }
       .hero-buttons { justify-content: center; }
-      .hero-bio { margin: 0 auto 2rem; }
-      .impact-strip { grid-template-columns: repeat(2, 1fr); }
+      .hero-role, .hero-affiliation { text-align: center; }
+      .terminal-stats { grid-template-columns: repeat(2, 1fr); }
       .research-grid { grid-template-columns: 1fr; }
       .lab-grid { grid-template-columns: 1fr; }
-      .pub-card { grid-template-columns: 1fr; }
-      .pub-year { padding-top: 0; }
-      .section-title { font-size: 2rem; }
-      nav .nav-links { display: none; }
+      .section-title { font-size: 2.2rem; }
+      .nav-links { display: none; }
+      .pub-entry { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
+<canvas id="matrix-rain"></canvas>
+<div class="scanlines"></div>
+<div class="grid-overlay"></div>
 
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <span class="logo">M. Alnemari</span>
+    <span class="logo">m.alnemari</span>
     <div class="nav-links">
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#preprints">Preprints</a>
-      <a href="#lab">Lab</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a href="cv.html" style="color:var(--cyan);">CV</a>
+      <a href="#research">research</a>
+      <a href="#publications">publications</a>
+      <a href="#preprints">preprints</a>
+      <a href="#lab">lab</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+      <a href="cv.html" style="color:var(--green);">cv</a>
     </div>
   </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ════════════ HERO ════════════ -->
 <section id="hero">
   <div class="container">
-    <div class="hero-grid">
+    <div class="hero-layout">
 
-      <div class="portrait-wrapper reveal-left">
-        <div class="portrait-glow"></div>
-        <div class="portrait-ring"></div>
-        <div class="portrait-ring-inner"></div>
+      <div class="portrait-container reveal">
+        <div class="portrait-frame">
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+        </div>
         <img src="./images/alnemari.jpeg" alt="Mohammed Alnemari" class="portrait-img">
-        <div class="orbit-dot"></div>
-        <div class="orbit-dot"></div>
-        <div class="orbit-dot"></div>
+        <div class="portrait-scanline"></div>
+        <div class="portrait-glitch"></div>
+        <div class="portrait-label">[ identity verified ]</div>
       </div>
 
       <div class="reveal">
-        <div class="hero-badge">
-          <span class="pulse-dot"></span>
-          Open to Research Collaborations
+        <div class="hero-status">
+          <span class="status-dot"></span>
+          <span>SYSTEM ONLINE // OPEN FOR COLLABORATION</span>
         </div>
+
         <h1 class="hero-name">
-          Mohammed<br><span class="gradient-text">Alnemari</span>
+          <span class="first">Mohammed</span>
+          <span class="last glitch" data-text="Alnemari">Alnemari</span>
         </h1>
-        <div class="hero-titles">
-          <p><span class="highlight">Assistant Professor & Chair</span>, Computer Engineering</p>
-          <p>University of Tabuk &middot; AIST Research Center &middot; Saudi Arabia</p>
-        </div>
-        <p class="hero-bio">
-          AI systems engineer turning large neural networks into deployable edge systems. I combine <strong>pruning, quantization, tensor decomposition</strong>, and <strong>knowledge distillation</strong> to compress DNNs for microcontrollers, FPGAs, and embedded GPUs — then validate with hardware-in-the-loop benchmarking. Ph.D. from UC Irvine with 12+ publications.
+
+        <p class="hero-role">
+          <span style="color:var(--text-muted)">role:</span> <span class="val">Assistant Professor & Department Chair</span>
         </p>
+        <p class="hero-affiliation">
+          <span style="color:var(--text-muted)">loc:</span> Computer Engineering, University of Tabuk // AIST Research Center // Saudi Arabia
+        </p>
+
+        <p class="hero-bio">
+          AI systems engineer turning large neural networks into <strong>deployable edge systems</strong>.
+          I combine <strong>pruning, quantization, tensor decomposition</strong>, and <strong>knowledge distillation</strong>
+          to compress DNNs for microcontrollers, FPGAs, and embedded GPUs. Ph.D. from UC Irvine.
+          <strong>12+ publications</strong>. IEEE Best Paper Award winner.
+        </p>
+
         <div class="hero-buttons">
-          <a class="btn btn-glow" href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ">
-            <i class="ai ai-google-scholar"></i> Google Scholar
+          <a class="btn btn-primary" href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ">
+            <i class="ai ai-google-scholar"></i> scholar
           </a>
-          <a class="btn btn-outline" href="cv.html"><i class="fas fa-file-alt"></i> CV</a>
-          <a class="btn btn-outline" href="https://orcid.org/0000-0002-5971-6703"><i class="ai ai-orcid"></i> ORCID</a>
-          <a class="btn btn-outline" href="https://github.com/alnemari-m"><i class="fab fa-github"></i> GitHub</a>
+          <a class="btn btn-ghost" href="cv.html"><i class="fas fa-terminal"></i> cv</a>
+          <a class="btn btn-ghost" href="https://orcid.org/0000-0002-5971-6703"><i class="ai ai-orcid"></i> orcid</a>
+          <a class="btn btn-ghost" href="https://github.com/alnemari-m"><i class="fab fa-github"></i> github</a>
+          <a class="btn btn-ghost" href="mailto:mnemari@ut.edu.sa"><i class="fas fa-envelope"></i> email</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ IMPACT NUMBERS ═══════════ -->
+<!-- ════════════ STATS ════════════ -->
 <section style="padding-top:0; padding-bottom:5rem;">
   <div class="container">
-    <div class="impact-strip stagger">
-      <div class="impact-card reveal" style="--i:0">
-        <div class="impact-number gradient-text">12+</div>
-        <div class="impact-label">Peer-Reviewed Publications</div>
+    <div class="terminal-stats stagger">
+      <div class="stat-terminal reveal">
+        <div class="stat-terminal-bar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="label">publications.log</span>
+        </div>
+        <div class="stat-terminal-body">
+          <div class="stat-value">12+</div>
+          <div class="stat-desc">peer-reviewed papers</div>
+        </div>
       </div>
-      <div class="impact-card reveal" style="--i:1">
-        <div class="impact-number" style="color:var(--gold)"><i class="fas fa-trophy" style="font-size:2.2rem"></i></div>
-        <div class="impact-label">IEEE EDGE Best Paper Award</div>
+      <div class="stat-terminal reveal">
+        <div class="stat-terminal-bar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="label">awards.log</span>
+        </div>
+        <div class="stat-terminal-body">
+          <div class="stat-value amber"><i class="fas fa-trophy" style="font-size:1.8rem"></i></div>
+          <div class="stat-desc">IEEE EDGE best paper</div>
+        </div>
       </div>
-      <div class="impact-card reveal" style="--i:2">
-        <div class="impact-number gradient-text">8+</div>
-        <div class="impact-label">Active Research Directions</div>
+      <div class="stat-terminal reveal">
+        <div class="stat-terminal-bar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="label">research.log</span>
+        </div>
+        <div class="stat-terminal-body">
+          <div class="stat-value cyan">8+</div>
+          <div class="stat-desc">active directions</div>
+        </div>
       </div>
-      <div class="impact-card reveal" style="--i:3">
-        <div class="impact-number" style="color:var(--cyan)">Ph.D.</div>
-        <div class="impact-label">UC Irvine — Computer Engineering</div>
+      <div class="stat-terminal reveal">
+        <div class="stat-terminal-bar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="label">education.log</span>
+        </div>
+        <div class="stat-terminal-body">
+          <div class="stat-value purple">Ph.D.</div>
+          <div class="stat-desc">UC Irvine // CompEng</div>
+        </div>
       </div>
     </div>
   </div>
@@ -834,44 +1105,44 @@ layout: null
 
 <div class="divider"></div>
 
-<!-- ═══════════ RESEARCH ═══════════ -->
+<!-- ════════════ RESEARCH ════════════ -->
 <section id="research">
   <div class="container">
-    <div class="reveal">
-      <p class="section-label">Research Interests</p>
-      <h2 class="section-title">What I <span class="gradient-text">Work On</span></h2>
-      <p class="section-desc">My research sits at the intersection of efficient deep learning and real-world deployment — making powerful AI models small, fast, and reliable enough for the edge.</p>
+    <div class="section-header reveal">
+      <p class="section-tag">research interests</p>
+      <h2 class="section-title">What I <span class="hl">Work On</span></h2>
+      <p class="section-desc">Building efficient AI systems at the intersection of deep learning theory, compression algorithms, and real hardware deployment.</p>
     </div>
     <div class="research-grid stagger">
-      <div class="research-card reveal" style="--i:0">
-        <div class="research-icon"><i class="fas fa-microchip"></i></div>
+      <div class="r-card reveal">
+        <div class="r-card-icon"><i class="fas fa-microchip"></i> EDGE_AI</div>
         <h3>Edge AI & TinyML</h3>
-        <p>Deploying DNNs on microcontrollers (ARM Cortex-M, RISC-V), Jetson, and FPGAs under strict latency, memory, and power budgets. Building portable inference engines.</p>
+        <p>Deploying DNNs on ARM Cortex-M, RISC-V, Jetson, and FPGAs under strict latency, memory, and power budgets. Building portable inference engines.</p>
       </div>
-      <div class="research-card reveal" style="--i:1">
-        <div class="research-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+      <div class="r-card reveal">
+        <div class="r-card-icon"><i class="fas fa-compress-arrows-alt"></i> COMPRESS</div>
         <h3>Neural Network Compression</h3>
-        <p>Filter pruning, quantization (INT8/binary), tensor decomposition, and knowledge distillation — achieving 10-100x compression with minimal accuracy loss.</p>
+        <p>Filter pruning, quantization (INT8/binary), tensor decomposition, and knowledge distillation — 10-100x compression with minimal accuracy loss.</p>
       </div>
-      <div class="research-card reveal" style="--i:2">
-        <div class="research-icon"><i class="fas fa-memory"></i></div>
+      <div class="r-card reveal">
+        <div class="r-card-icon"><i class="fas fa-memory"></i> IN_MEMORY</div>
         <h3>In-Memory AI Computing</h3>
-        <p>RRAM crossbar-based analog accelerators that break the von Neumann bottleneck. Designing fault-tolerant neural architectures for resistive memory devices.</p>
+        <p>RRAM crossbar-based analog accelerators breaking the von Neumann bottleneck. Fault-tolerant architectures for resistive memory devices.</p>
       </div>
-      <div class="research-card reveal" style="--i:3">
-        <div class="research-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Conformal Prediction for ML</h3>
-        <p>Distribution-free statistical methods providing coverage guarantees for compression hyperparameters — replacing expensive grid search with reliable surrogates.</p>
+      <div class="r-card reveal">
+        <div class="r-card-icon"><i class="fas fa-chart-line"></i> CONFORMAL</div>
+        <h3>Conformal Prediction</h3>
+        <p>Distribution-free statistical methods providing coverage guarantees for compression hyperparameters — replacing expensive grid search.</p>
       </div>
-      <div class="research-card reveal" style="--i:4">
-        <div class="research-icon"><i class="fas fa-brain"></i></div>
+      <div class="r-card reveal">
+        <div class="r-card-icon"><i class="fas fa-brain"></i> BNN</div>
         <h3>Binary Neural Networks</h3>
-        <p>32x compression through 1-bit weights and activations. Studying loss landscape geometry and training dynamics to make BNNs practical and reliable.</p>
+        <p>32x compression through 1-bit weights. Studying loss landscape geometry and training dynamics to make BNNs practical and reliable.</p>
       </div>
-      <div class="research-card reveal" style="--i:5">
-        <div class="research-icon"><i class="fas fa-project-diagram"></i></div>
+      <div class="r-card reveal">
+        <div class="r-card-icon"><i class="fas fa-project-diagram"></i> GEOMETRY</div>
         <h3>Neural Operators & Geometry</h3>
-        <p>Equivariant neural networks and structured pruning that respects symmetry. Geometric deep learning for scientific applications.</p>
+        <p>Equivariant neural networks and structured pruning respecting symmetry. Geometric deep learning for scientific computing.</p>
       </div>
     </div>
   </div>
@@ -879,209 +1150,204 @@ layout: null
 
 <div class="divider"></div>
 
-<!-- ═══════════ PUBLICATIONS ═══════════ -->
+<!-- ════════════ PUBLICATIONS ════════════ -->
 <section id="publications">
   <div class="container">
-    <div class="reveal">
-      <p class="section-label">Selected Work</p>
-      <h2 class="section-title"><span class="gradient-text">Publications</span></h2>
-      <p class="section-desc">11 peer-reviewed papers spanning edge computing, neural network compression, hardware-aware optimization, and brain-computer interfaces.</p>
+    <div class="section-header reveal">
+      <p class="section-tag">selected work</p>
+      <h2 class="section-title"><span class="hl">Publications</span></h2>
+      <p class="section-desc">12+ peer-reviewed papers spanning edge computing, neural compression, hardware optimization, and brain-computer interfaces.</p>
     </div>
-    <div class="pub-list">
 
-      <div class="pub-card reveal">
-        <div class="pub-year">2026</div>
-        <div>
-          <div class="pub-title"><a href="https://arxiv.org/abs/2603.07365">Scaling Laws in the Tiny Regime: How Small Models Change Their Mistakes</a></div>
-          <div class="pub-authors"><span class="me">M. Alnemari</span>, R. Qureshi, N. Bagherzadeh</div>
-          <div class="pub-venue">arXiv:2603.07365, March 2026</div>
-          <div class="pub-desc">Neural scaling laws in the sub-20M parameter regime where TinyML and edge AI operate. 90 models (22K-19.8M params) across two architectures revealing how small models change their mistakes.</div>
-          <div class="pub-meta">
-            <span class="pub-tag" style="background:rgba(52,211,153,0.12);color:var(--emerald);"><i class="fas fa-fire"></i> New</span>
-            <a href="https://arxiv.org/abs/2603.07365" class="pub-tag pub-tag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+    <div class="pub-terminal reveal">
+      <div class="pub-terminal-header">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="title">~/research/publications $ cat --all</span>
+      </div>
+      <div class="pub-terminal-body">
+
+        <div class="pub-entry">
+          <div class="pub-yr">2026</div>
+          <div>
+            <div class="pub-title-text"><a href="https://arxiv.org/abs/2603.07365">Scaling Laws in the Tiny Regime: How Small Models Change Their Mistakes</a></div>
+            <div class="pub-authors-text"><span class="me">M. Alnemari</span>, R. Qureshi, N. Bagherzadeh</div>
+            <div class="pub-venue-text">arXiv:2603.07365</div>
+            <div class="pub-tags">
+              <span class="ptag ptag-new"><i class="fas fa-fire"></i> NEW</span>
+              <a href="https://arxiv.org/abs/2603.07365" class="ptag ptag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="pub-card reveal">
-        <div class="pub-year">2025</div>
-        <div>
-          <div class="pub-title"><a href="https://arxiv.org/abs/2511.17242">Equivariant-Aware Structured Pruning for Efficient Edge Deployment</a></div>
-          <div class="pub-authors"><span class="me">M. Alnemari</span></div>
-          <div class="pub-venue">IEEE EdgeCom 2025 &amp; arXiv:2511.17242</div>
-          <div class="pub-meta">
-            <a href="https://arxiv.org/abs/2511.17242" class="pub-tag pub-tag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+        <div class="pub-entry">
+          <div class="pub-yr">2025</div>
+          <div>
+            <div class="pub-title-text"><a href="https://arxiv.org/abs/2511.17242">Equivariant-Aware Structured Pruning for Efficient Edge Deployment</a></div>
+            <div class="pub-authors-text"><span class="me">M. Alnemari</span></div>
+            <div class="pub-venue-text">IEEE EdgeCom 2025 & arXiv:2511.17242</div>
+            <div class="pub-tags">
+              <a href="https://arxiv.org/abs/2511.17242" class="ptag ptag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="pub-card reveal">
-        <div class="pub-year">2025</div>
-        <div>
-          <div class="pub-title"><a href="#">Innovative FIR Filter Design Using L1/L2 Regularization for Sparsity and Smoothness</a></div>
-          <div class="pub-authors">M. H. M. Nerma, A. O. Elfaki, A. Bushnag, <span class="me">M. Alnemari</span></div>
-          <div class="pub-venue">Electronics, vol. 14, no. 22, p. 4386, 2025</div>
-        </div>
-      </div>
-
-      <div class="pub-card reveal">
-        <div class="pub-year">2024</div>
-        <div>
-          <div class="pub-title"><a href="#">Ultimate Compression: Joint Quantization and Tensor Decomposition for Compact Models on the Edge</a></div>
-          <div class="pub-authors"><span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
-          <div class="pub-venue">Applied Sciences, vol. 14, no. 20, p. 9354, 2024</div>
-        </div>
-      </div>
-
-      <div class="pub-card reveal">
-        <div class="pub-year">2023</div>
-        <div>
-          <div class="pub-title"><a href="#">AI-Enabled Energy Management Device for Sustainable Quality of Life</a></div>
-          <div class="pub-authors">H. S. Samkari, O. Albalawi, T. AlKhudaydi, <span class="me">M. H. Alnemari</span>, M. F. Allehyani</div>
-          <div class="pub-venue">2023 Saudi Arabia Smart Grid (SASG), pp. 1-7</div>
-        </div>
-      </div>
-
-      <div class="pub-card reveal">
-        <div class="pub-year">2022</div>
-        <div>
-          <div class="pub-title"><a href="https://arxiv.org/abs/2208.00883">A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition</a></div>
-          <div class="pub-authors">Y. Qiao, <span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
-          <div class="pub-venue">IEEE International Conference on Industrial Technology (ICIT), 2022</div>
-          <div class="pub-meta">
-            <span class="pub-tag pub-tag-citations"><i class="fas fa-quote-right"></i> 11 citations</span>
-            <a href="https://arxiv.org/abs/2208.00883" class="pub-tag pub-tag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+        <div class="pub-entry">
+          <div class="pub-yr">2025</div>
+          <div>
+            <div class="pub-title-text">Innovative FIR Filter Design Using L1/L2 Regularization for Sparsity and Smoothness</div>
+            <div class="pub-authors-text">M. Nerma, A. Elfaki, A. Bushnag, <span class="me">M. Alnemari</span></div>
+            <div class="pub-venue-text">Electronics, vol. 14, no. 22, p. 4386</div>
           </div>
         </div>
-      </div>
 
-      <div class="pub-card reveal">
-        <div class="pub-year">2022</div>
-        <div>
-          <div class="pub-title"><a href="https://doi.org/10.7717/peerj-cs.924">Storage-Efficient Ensemble Classification via Filter Sharing on Binarized CNNs</a></div>
-          <div class="pub-authors">H. J. Kim, <span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
-          <div class="pub-venue">PeerJ Computer Science, vol. 8, e924, 2022</div>
-          <div class="pub-meta">
-            <a href="https://doi.org/10.7717/peerj-cs.924" class="pub-tag pub-tag-link"><i class="fas fa-file-pdf"></i> Paper</a>
+        <div class="pub-entry">
+          <div class="pub-yr">2024</div>
+          <div>
+            <div class="pub-title-text">Ultimate Compression: Joint Quantization and Tensor Decomposition for Compact Models on the Edge</div>
+            <div class="pub-authors-text"><span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
+            <div class="pub-venue-text">Applied Sciences, vol. 14, no. 20, p. 9354</div>
           </div>
         </div>
-      </div>
 
-      <div class="pub-card reveal">
-        <div class="pub-year">2019</div>
-        <div>
-          <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/8812185/">Efficient Deep Neural Networks for Edge Computing</a></div>
-          <div class="pub-authors"><span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
-          <div class="pub-venue">IEEE International Conference on Edge Computing (EDGE), 2019</div>
-          <div class="pub-meta">
-            <span class="pub-tag pub-tag-award"><i class="fas fa-trophy"></i> Best Paper Award</span>
-            <span class="pub-tag pub-tag-citations"><i class="fas fa-quote-right"></i> 15 citations</span>
-            <a href="https://ieeexplore.ieee.org/abstract/document/8812185/" class="pub-tag pub-tag-link"><i class="fas fa-file-pdf"></i> IEEE Xplore</a>
+        <div class="pub-entry">
+          <div class="pub-yr">2023</div>
+          <div>
+            <div class="pub-title-text">AI-Enabled Energy Management Device for Sustainable Quality of Life</div>
+            <div class="pub-authors-text">H. Samkari, O. Albalawi, T. AlKhudaydi, <span class="me">M. Alnemari</span>, M. Allehyani</div>
+            <div class="pub-venue-text">2023 Saudi Arabia Smart Grid (SASG)</div>
           </div>
         </div>
-      </div>
 
-      <div class="pub-card reveal">
-        <div class="pub-year">2017</div>
-        <div>
-          <div class="pub-title"><a href="https://escholarship.org/uc/item/1bh7k9cg">Integration of a Low-Cost EEG Headset with the Internet of Things Framework</a></div>
-          <div class="pub-authors"><span class="me">M. Alnemari</span></div>
-          <div class="pub-venue">M.S. Thesis, University of California, Irvine, 2017</div>
-          <div class="pub-meta">
-            <span class="pub-tag pub-tag-citations"><i class="fas fa-quote-right"></i> 15 citations</span>
+        <div class="pub-entry">
+          <div class="pub-yr">2022</div>
+          <div>
+            <div class="pub-title-text"><a href="https://arxiv.org/abs/2208.00883">A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition</a></div>
+            <div class="pub-authors-text">Y. Qiao, <span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
+            <div class="pub-venue-text">IEEE ICIT 2022</div>
+            <div class="pub-tags">
+              <span class="ptag ptag-cite"><i class="fas fa-quote-right"></i> 11 citations</span>
+              <a href="https://arxiv.org/abs/2208.00883" class="ptag ptag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+            </div>
           </div>
         </div>
-      </div>
 
+        <div class="pub-entry">
+          <div class="pub-yr">2022</div>
+          <div>
+            <div class="pub-title-text"><a href="https://doi.org/10.7717/peerj-cs.924">Storage-Efficient Ensemble Classification via Filter Sharing on Binarized CNNs</a></div>
+            <div class="pub-authors-text">H. Kim, <span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
+            <div class="pub-venue-text">PeerJ Computer Science, vol. 8, e924</div>
+            <div class="pub-tags">
+              <a href="https://doi.org/10.7717/peerj-cs.924" class="ptag ptag-link"><i class="fas fa-file-pdf"></i> Paper</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div class="pub-yr">2019</div>
+          <div>
+            <div class="pub-title-text"><a href="https://ieeexplore.ieee.org/abstract/document/8812185/">Efficient Deep Neural Networks for Edge Computing</a></div>
+            <div class="pub-authors-text"><span class="me">M. Alnemari</span>, N. Bagherzadeh</div>
+            <div class="pub-venue-text">IEEE International Conference on Edge Computing (EDGE)</div>
+            <div class="pub-tags">
+              <span class="ptag ptag-award"><i class="fas fa-trophy"></i> BEST PAPER</span>
+              <span class="ptag ptag-cite"><i class="fas fa-quote-right"></i> 15 citations</span>
+              <a href="https://ieeexplore.ieee.org/abstract/document/8812185/" class="ptag ptag-link"><i class="fas fa-file-pdf"></i> IEEE</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div class="pub-yr">2017</div>
+          <div>
+            <div class="pub-title-text"><a href="https://escholarship.org/uc/item/1bh7k9cg">Integration of a Low-Cost EEG Headset with the Internet of Things Framework</a></div>
+            <div class="pub-authors-text"><span class="me">M. Alnemari</span></div>
+            <div class="pub-venue-text">M.S. Thesis, University of California, Irvine</div>
+            <div class="pub-tags">
+              <span class="ptag ptag-cite"><i class="fas fa-quote-right"></i> 15 citations</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ═══════════ ARXIV PREPRINTS (auto-updated monthly) ═══════════ -->
+<!-- ════════════ PREPRINTS (auto-updated) ════════════ -->
 {% if site.data.arxiv_papers.size > 0 %}
 <section id="preprints">
   <div class="container">
-    <div class="reveal">
-      <p class="section-label">Auto-Updated from arXiv</p>
-      <h2 class="section-title">Latest <span class="gradient-text">Preprints</span></h2>
-      <p class="section-desc">Automatically fetched from arXiv every month. Includes all papers with my name as author.</p>
+    <div class="section-header reveal">
+      <p class="section-tag">auto-synced from arxiv</p>
+      <h2 class="section-title">Latest <span class="hl-cyan">Preprints</span></h2>
+      <p class="section-desc">Automatically fetched from arXiv monthly. All papers with my name as author.</p>
     </div>
-    <div class="pub-list">
-      {% for paper in site.data.arxiv_papers %}
-      <div class="pub-card reveal">
-        <div class="pub-year">{{ paper.year }}</div>
-        <div>
-          <div class="pub-title"><a href="{{ paper.abs_url }}">{{ paper.title }}</a></div>
-          <div class="pub-authors">
-            {% for author in paper.authors %}
-              {% if author contains "Alnemari" %}<span class="me">{{ author }}</span>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
-          </div>
-          <div class="pub-venue">arXiv:{{ paper.arxiv_id }} &middot; {{ paper.primary_category }}</div>
-          <div class="pub-desc" style="margin-top:0.4rem;">{{ paper.abstract }}</div>
-          <div class="pub-meta">
-            <a href="{{ paper.abs_url }}" class="pub-tag pub-tag-link"><i class="ai ai-arxiv"></i> arXiv</a>
-            {% if paper.pdf_url %}
-            <a href="{{ paper.pdf_url }}" class="pub-tag pub-tag-link"><i class="fas fa-file-pdf"></i> PDF</a>
-            {% endif %}
-            <span class="pub-tag" style="background:rgba(99,102,241,0.08);color:var(--text-muted);">{{ paper.date }}</span>
-          </div>
-        </div>
+    {% for paper in site.data.arxiv_papers %}
+    <div class="preprint-entry reveal">
+      <div class="pub-title-text"><a href="{{ paper.abs_url }}">{{ paper.title }}</a></div>
+      <div class="pub-authors-text" style="margin-top:0.3rem;">
+        {% for author in paper.authors %}{% if author contains "Alnemari" %}<span class="me">{{ author }}</span>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
       </div>
-      {% endfor %}
+      <div class="pub-venue-text" style="margin-top:0.2rem;">arXiv:{{ paper.arxiv_id }} // {{ paper.primary_category }} // {{ paper.date }}</div>
+      <p style="font-size:0.83rem; color:var(--text-dim); margin-top:0.5rem; line-height:1.6;">{{ paper.abstract }}</p>
+      <div class="pub-tags" style="margin-top:0.5rem;">
+        <a href="{{ paper.abs_url }}" class="ptag ptag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+        {% if paper.pdf_url %}<a href="{{ paper.pdf_url }}" class="ptag ptag-link"><i class="fas fa-file-pdf"></i> PDF</a>{% endif %}
+      </div>
     </div>
+    {% endfor %}
   </div>
 </section>
-
 <div class="divider"></div>
 {% endif %}
 
-<!-- ═══════════ LAB ═══════════ -->
+<!-- ════════════ LAB ════════════ -->
 <section id="lab">
   <div class="container">
-    <div class="reveal">
-      <p class="section-label">Active Projects</p>
-      <h2 class="section-title">The <span class="gradient-text">Alnemari Lab</span></h2>
-      <p class="section-desc">Current research spanning 8 areas — from neural network theory to hardware implementations and real-world AI deployments.</p>
+    <div class="section-header reveal">
+      <p class="section-tag">active projects</p>
+      <h2 class="section-title">The <span class="hl">Alnemari</span> Lab</h2>
+      <p class="section-desc">Current research spanning 8+ areas — from neural network theory to hardware implementations and real-world AI deployment.</p>
     </div>
     <div class="lab-grid stagger">
-      <div class="lab-card reveal" style="--i:0">
-        <span class="lab-status lab-status-active">Active</span>
+      <div class="lab-card reveal">
+        <span class="lab-badge lab-badge-active">active</span>
         <h3>Cosmo: Portable TinyML Engine</h3>
-        <p>First truly portable ML inference engine using Actually Portable Executables — single binary runs on Linux, macOS, Windows, FreeBSD, and bare-metal x86. Targeting MLSys 2026.</p>
-        <div class="lab-partners"><strong>Target:</strong> MLSys / OSDI 2026</div>
+        <p>First truly portable ML inference engine using Actually Portable Executables. Single binary runs on Linux, macOS, Windows, FreeBSD, and bare-metal x86.</p>
+        <div class="lab-meta">target: MLSys / OSDI 2026</div>
       </div>
-      <div class="lab-card reveal" style="--i:1">
-        <span class="lab-status lab-status-collab">Collaboration</span>
+      <div class="lab-card reveal">
+        <span class="lab-badge lab-badge-collab">collaboration</span>
         <h3>ReRAM In-Memory AI Accelerator</h3>
         <p>RRAM crossbar-based analog computing SoC for extreme environments. Fault-tolerant neural architectures with non-volatile resistive memory.</p>
-        <div class="lab-partners"><strong>With:</strong> UC Irvine &middot; RDIA Funding</div>
+        <div class="lab-meta">with: UC Irvine // RDIA funding</div>
       </div>
-      <div class="lab-card reveal" style="--i:2">
-        <span class="lab-status lab-status-active">Active</span>
+      <div class="lab-card reveal">
+        <span class="lab-badge lab-badge-active">active</span>
         <h3>Loss Landscape Geometry of BNNs</h3>
-        <p>First systematic analysis of how binary constraints reshape the loss landscape. Proving flat minima enable better BNN training — achieving 8-15% accuracy improvements.</p>
-        <div class="lab-partners"><strong>Target:</strong> Nature Scientific Reports</div>
+        <p>First systematic analysis of binary constraint effects on loss landscapes. Proving flat minima enable better BNN training with 8-15% accuracy gains.</p>
+        <div class="lab-meta">target: Nature Scientific Reports</div>
       </div>
-      <div class="lab-card reveal" style="--i:3">
-        <span class="lab-status lab-status-collab">Collaboration</span>
+      <div class="lab-card reveal">
+        <span class="lab-badge lab-badge-collab">collaboration</span>
         <h3>Jellyfish Detection for Desalination</h3>
-        <p>AI + sensing system to detect jellyfish emergence and assess risks at SWCC desalination plants. Edge AI deployed in harsh marine environments.</p>
-        <div class="lab-partners"><strong>With:</strong> AIST Center &middot; SWCC</div>
+        <p>AI + sensing for jellyfish emergence detection and risk assessment at SWCC desalination plants. Edge AI in harsh marine environments.</p>
+        <div class="lab-meta">with: AIST Center // SWCC</div>
       </div>
-      <div class="lab-card reveal" style="--i:4">
-        <span class="lab-status lab-status-active">Active</span>
-        <h3>Iterative Tensor KD Compression</h3>
-        <p>Progressive rank reduction combined with knowledge distillation — gradual compression that preserves more information than one-shot methods.</p>
-        <div class="lab-partners"><strong>Target:</strong> ICLR / Nature Scientific Reports</div>
+      <div class="lab-card reveal">
+        <span class="lab-badge lab-badge-active">active</span>
+        <h3>Scaling Laws in the Tiny Regime</h3>
+        <p>Neural scaling laws below 20M parameters where TinyML operates. 90 models revealing how small models change their mistakes differently than large ones.</p>
+        <div class="lab-meta">arXiv:2603.07365 // 2026</div>
       </div>
-      <div class="lab-card reveal" style="--i:5">
-        <span class="lab-status lab-status-active">Active</span>
+      <div class="lab-card reveal">
+        <span class="lab-badge lab-badge-active">active</span>
         <h3>Conformal Sparse Filter Design</h3>
-        <p>Conformal prediction for reliable hyperparameter selection in sparse FIR filter design — 60× speedup with 95% coverage guarantees.</p>
-        <div class="lab-partners"><strong>Target:</strong> MDPI Electronics</div>
+        <p>Conformal prediction for reliable hyperparameter selection in sparse FIR filter design. 60x speedup with 95% coverage guarantees.</p>
+        <div class="lab-meta">target: MDPI Electronics</div>
       </div>
     </div>
   </div>
@@ -1089,160 +1355,145 @@ layout: null
 
 <div class="divider"></div>
 
-<!-- ═══════════ SKILLS ═══════════ -->
+<!-- ════════════ SKILLS ════════════ -->
 <section id="skills">
   <div class="container" style="text-align:center;">
-    <div class="reveal">
-      <p class="section-label" style="justify-content:center;">Technical Expertise</p>
-      <h2 class="section-title">Skills & <span class="gradient-text">Tools</span></h2>
+    <div class="section-header reveal" style="text-align:center;">
+      <p class="section-tag" style="justify-content:center;">technical stack</p>
+      <h2 class="section-title">Skills & <span class="hl">Tools</span></h2>
     </div>
-    <div class="skills-container reveal" style="max-width:800px; margin:2rem auto 0;">
-      <span class="skill-chip primary">PyTorch</span>
-      <span class="skill-chip primary">TensorRT</span>
-      <span class="skill-chip primary">Quantization</span>
-      <span class="skill-chip primary">Pruning</span>
-      <span class="skill-chip primary">Knowledge Distillation</span>
-      <span class="skill-chip primary">Tensor Decomposition</span>
-      <span class="skill-chip">Python</span>
-      <span class="skill-chip">C++</span>
-      <span class="skill-chip">CUDA</span>
-      <span class="skill-chip">FPGA (Xilinx Zynq)</span>
-      <span class="skill-chip">RISC-V</span>
-      <span class="skill-chip">Verilog</span>
-      <span class="skill-chip">LLM Fine-Tuning</span>
-      <span class="skill-chip">Transformers</span>
-      <span class="skill-chip">Neural Operators</span>
-      <span class="skill-chip">Equivariant NNs</span>
-      <span class="skill-chip">Binary Neural Networks</span>
-      <span class="skill-chip">Edge Deployment</span>
-      <span class="skill-chip">Raspberry Pi</span>
-      <span class="skill-chip">Jetson</span>
-      <span class="skill-chip">IoT Frameworks</span>
-      <span class="skill-chip">Git</span>
-      <span class="skill-chip">REST APIs</span>
-      <span class="skill-chip">Benchmarking</span>
+    <div class="skills-wrap reveal">
+      <span class="skill core">PyTorch</span>
+      <span class="skill core">TensorRT</span>
+      <span class="skill core">Quantization</span>
+      <span class="skill core">Pruning</span>
+      <span class="skill core">Knowledge Distillation</span>
+      <span class="skill core">Tensor Decomposition</span>
+      <span class="skill">Python</span>
+      <span class="skill">C++</span>
+      <span class="skill">CUDA</span>
+      <span class="skill">FPGA (Xilinx Zynq)</span>
+      <span class="skill">RISC-V</span>
+      <span class="skill">Verilog</span>
+      <span class="skill">LLM Fine-Tuning</span>
+      <span class="skill">Transformers</span>
+      <span class="skill">Neural Operators</span>
+      <span class="skill">Equivariant NNs</span>
+      <span class="skill">Binary Neural Networks</span>
+      <span class="skill">Edge Deployment</span>
+      <span class="skill">Raspberry Pi</span>
+      <span class="skill">NVIDIA Jetson</span>
+      <span class="skill">IoT Frameworks</span>
+      <span class="skill">Git</span>
+      <span class="skill">REST APIs</span>
+      <span class="skill">Benchmarking</span>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ═══════════ CONTACT ═══════════ -->
+<!-- ════════════ CONTACT ════════════ -->
 <section id="contact">
   <div class="container" style="text-align:center;">
-    <div class="reveal">
-      <p class="section-label" style="justify-content:center;">Get In Touch</p>
-      <h2 class="section-title">Let's <span class="gradient-text">Collaborate</span></h2>
-      <p class="section-desc" style="margin:0 auto 3rem;">Open to research collaborations, industry partnerships, grant proposals, and speaking invitations in Edge AI, TinyML, and neural network compression.</p>
+    <div class="section-header reveal" style="text-align:center;">
+      <p class="section-tag" style="justify-content:center;">get in touch</p>
+      <h2 class="section-title">Let's <span class="hl">Collaborate</span></h2>
+      <p class="section-desc" style="margin:1rem auto 3rem;">Open to research collaborations, industry partnerships, and grant proposals in Edge AI, TinyML, and neural network compression.</p>
     </div>
     <div class="contact-grid reveal">
-      <a class="contact-card" href="mailto:mnemari@ut.edu.sa">
+      <a class="contact-item" href="mailto:mnemari@ut.edu.sa">
         <i class="fas fa-envelope"></i>
-        <div><div class="contact-label">Email</div><div class="contact-info">mnemari@ut.edu.sa</div></div>
+        <div><span class="contact-label">email</span>mnemari@ut.edu.sa</div>
       </a>
-      <a class="contact-card" href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ">
+      <a class="contact-item" href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ">
         <i class="ai ai-google-scholar"></i>
-        <div><div class="contact-label">Scholar</div><div class="contact-info">Google Scholar</div></div>
+        <div><span class="contact-label">scholar</span>Google Scholar</div>
       </a>
-      <a class="contact-card" href="https://orcid.org/0000-0002-5971-6703">
+      <a class="contact-item" href="https://orcid.org/0000-0002-5971-6703">
         <i class="ai ai-orcid"></i>
-        <div><div class="contact-label">ORCID</div><div class="contact-info">0000-0002-5971-6703</div></div>
+        <div><span class="contact-label">orcid</span>0000-0002-5971-6703</div>
       </a>
-      <a class="contact-card" href="https://github.com/alnemari-m">
+      <a class="contact-item" href="https://github.com/alnemari-m">
         <i class="fab fa-github"></i>
-        <div><div class="contact-label">GitHub</div><div class="contact-info">alnemari-m</div></div>
+        <div><span class="contact-label">github</span>alnemari-m</div>
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="container">
-    <p>&copy; 2025 Mohammed Alnemari &middot; Department of Computer Engineering, University of Tabuk, Saudi Arabia</p>
-  </div>
+  <p>&gt; &copy; 2025 Mohammed Alnemari // Computer Engineering, University of Tabuk, Saudi Arabia<span class="cursor">_</span></p>
 </footer>
 
-<!-- ═══════════ SCRIPTS ═══════════ -->
+<!-- ════════════ SCRIPTS ════════════ -->
 <script>
-// Particle Network Background
+// ═══ MATRIX RAIN ═══
 (function() {
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let w, h;
+  const c = document.getElementById('matrix-rain');
+  const ctx = c.getContext('2d');
+  let cols, drops;
+  const chars = 'アイウエオカキクケコ01サシスセソタチツテト10ナニヌネノハヒフヘホ00マミムメモ11AIML'.split('');
+  const fontSize = 14;
 
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
+  function init() {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+    cols = Math.floor(c.width / fontSize);
+    drops = Array(cols).fill(1).map(() => Math.random() * -100);
   }
-  resize();
-  window.addEventListener('resize', resize);
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * w;
-      this.y = Math.random() * h;
-      this.vx = (Math.random() - 0.5) * 0.3;
-      this.vy = (Math.random() - 0.5) * 0.3;
-      this.r = Math.random() * 1.5 + 0.5;
-    }
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-      if (this.x < 0 || this.x > w) this.vx *= -1;
-      if (this.y < 0 || this.y > h) this.vy *= -1;
-    }
-  }
-
-  for (let i = 0; i < 60; i++) particles.push(new Particle());
+  init();
+  window.addEventListener('resize', init);
 
   function draw() {
-    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(10,10,12,0.08)';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.fillStyle = '#00ff9d';
+    ctx.font = fontSize + 'px monospace';
 
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 180) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(99,102,241,${0.06 * (1 - dist / 180)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
+    for (let i = 0; i < cols; i++) {
+      if (drops[i] > 0) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const alpha = Math.random() * 0.15 + 0.02;
+        ctx.fillStyle = `rgba(0,255,157,${alpha})`;
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
       }
+      if (drops[i] * fontSize > c.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
     }
-
-    // Draw particles
-    particles.forEach(p => {
-      p.update();
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(99,102,241,0.25)';
-      ctx.fill();
-    });
-
     requestAnimationFrame(draw);
   }
   draw();
 })();
 
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+// ═══ SCROLL REVEAL ═══
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-document.querySelectorAll('.reveal, .reveal-left').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Nav scroll effect
+// ═══ NAV SCROLL ═══
 window.addEventListener('scroll', () => {
-  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
 });
+
+// ═══ TYPING EFFECT ON STATUS ═══
+(function() {
+  const el = document.querySelector('.hero-status span:last-child');
+  if (!el) return;
+  const text = el.textContent;
+  el.textContent = '';
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 40 + Math.random() * 30);
+    }
+  }
+  setTimeout(type, 1500);
+})();
 </script>
 
 </body>
