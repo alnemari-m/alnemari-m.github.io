@@ -1,0 +1,55 @@
+- arxiv_id: 2603.07365v1
+  title: 'Scaling Laws in the Tiny Regime: How Small Models Change Their Mistakes'
+  authors:
+  - Mohammed Alnemari
+  - Rizwan Qureshi
+  - Nader Begrazadah
+  abstract: Neural scaling laws describe how model performance improves as a power
+    law with size, but existing work focuses on models above 100M parameters. The
+    sub-20M regime -- where TinyML and edge AI operate -- remains unexamined. We train
+    90 models (22K--19.8M parameters) across two architectures (plain...
+  year: 2026
+  date: '2026-03-07'
+  primary_category: cs.LG
+  categories:
+  - cs.LG
+  - cs.AI
+  pdf_url: https://arxiv.org/pdf/2603.07365v1
+  abs_url: https://arxiv.org/abs/2603.07365v1
+- arxiv_id: 2511.17242v1
+  title: 'Equivariant-Aware Structured Pruning for Efficient Edge Deployment: A Comprehensive
+    Framework with Adaptive Fine-Tuning'
+  authors:
+  - Mohammed Alnemari
+  abstract: This paper presents a novel framework combining group equivariant convolutional
+    neural networks (G-CNNs) with equivariant-aware structured pruning to produce
+    compact, transformation-invariant models for resource-constrained environments.
+    Equivariance to rotations is achieved through the C4 cyclic...
+  year: 2025
+  date: '2025-11-21'
+  primary_category: cs.CV
+  categories:
+  - cs.CV
+  - cs.LG
+  pdf_url: https://arxiv.org/pdf/2511.17242v1
+  abs_url: https://arxiv.org/abs/2511.17242v1
+- arxiv_id: 2208.00883v1
+  title: A Two-Stage Efficient 3-D CNN Framework for EEG Based Emotion Recognition
+  authors:
+  - Ye Qiao
+  - Mohammed Alnemari
+  - Nader Bagherzadeh
+  abstract: This paper proposes a novel two-stage framework for emotion recognition
+    using EEG data that outperforms state-of-the-art models while keeping the model
+    size small and computationally efficient. The framework consists of two stages;
+    the first stage involves constructing efficient models named EEGN...
+  year: 2022
+  date: '2022-07-26'
+  primary_category: eess.SP
+  categories:
+  - eess.SP
+  - cs.AI
+  - cs.HC
+  - cs.LG
+  pdf_url: https://arxiv.org/pdf/2208.00883v1
+  abs_url: https://arxiv.org/abs/2208.00883v1

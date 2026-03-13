@@ -756,6 +756,7 @@ layout: null
     <div class="nav-links">
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
+      <a href="#preprints">Preprints</a>
       <a href="#lab">Lab</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -792,7 +793,7 @@ layout: null
           <p>University of Tabuk &middot; AIST Research Center &middot; Saudi Arabia</p>
         </div>
         <p class="hero-bio">
-          AI systems engineer turning large neural networks into deployable edge systems. I combine <strong>pruning, quantization, tensor decomposition</strong>, and <strong>knowledge distillation</strong> to compress DNNs for microcontrollers, FPGAs, and embedded GPUs — then validate with hardware-in-the-loop benchmarking. Ph.D. from UC Irvine with 11 peer-reviewed publications.
+          AI systems engineer turning large neural networks into deployable edge systems. I combine <strong>pruning, quantization, tensor decomposition</strong>, and <strong>knowledge distillation</strong> to compress DNNs for microcontrollers, FPGAs, and embedded GPUs — then validate with hardware-in-the-loop benchmarking. Ph.D. from UC Irvine with 12+ publications.
         </p>
         <div class="hero-buttons">
           <a class="btn btn-glow" href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ">
@@ -812,7 +813,7 @@ layout: null
   <div class="container">
     <div class="impact-strip stagger">
       <div class="impact-card reveal" style="--i:0">
-        <div class="impact-number gradient-text">11</div>
+        <div class="impact-number gradient-text">12+</div>
         <div class="impact-label">Peer-Reviewed Publications</div>
       </div>
       <div class="impact-card reveal" style="--i:1">
@@ -889,9 +890,23 @@ layout: null
     <div class="pub-list">
 
       <div class="pub-card reveal">
+        <div class="pub-year">2026</div>
+        <div>
+          <div class="pub-title"><a href="https://arxiv.org/abs/2603.07365">Scaling Laws in the Tiny Regime: How Small Models Change Their Mistakes</a></div>
+          <div class="pub-authors"><span class="me">M. Alnemari</span>, R. Qureshi, N. Bagherzadeh</div>
+          <div class="pub-venue">arXiv:2603.07365, March 2026</div>
+          <div class="pub-desc">Neural scaling laws in the sub-20M parameter regime where TinyML and edge AI operate. 90 models (22K-19.8M params) across two architectures revealing how small models change their mistakes.</div>
+          <div class="pub-meta">
+            <span class="pub-tag" style="background:rgba(52,211,153,0.12);color:var(--emerald);"><i class="fas fa-fire"></i> New</span>
+            <a href="https://arxiv.org/abs/2603.07365" class="pub-tag pub-tag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card reveal">
         <div class="pub-year">2025</div>
         <div>
-          <div class="pub-title"><a href="#">Equivariant-Aware Structured Pruning for Efficient Edge Deployment</a></div>
+          <div class="pub-title"><a href="https://arxiv.org/abs/2511.17242">Equivariant-Aware Structured Pruning for Efficient Edge Deployment</a></div>
           <div class="pub-authors"><span class="me">M. Alnemari</span></div>
           <div class="pub-venue">IEEE EdgeCom 2025 &amp; arXiv:2511.17242</div>
           <div class="pub-meta">
@@ -983,6 +998,45 @@ layout: null
 </section>
 
 <div class="divider"></div>
+
+<!-- ═══════════ ARXIV PREPRINTS (auto-updated monthly) ═══════════ -->
+{% if site.data.arxiv_papers.size > 0 %}
+<section id="preprints">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Auto-Updated from arXiv</p>
+      <h2 class="section-title">Latest <span class="gradient-text">Preprints</span></h2>
+      <p class="section-desc">Automatically fetched from arXiv every month. Includes all papers with my name as author.</p>
+    </div>
+    <div class="pub-list">
+      {% for paper in site.data.arxiv_papers %}
+      <div class="pub-card reveal">
+        <div class="pub-year">{{ paper.year }}</div>
+        <div>
+          <div class="pub-title"><a href="{{ paper.abs_url }}">{{ paper.title }}</a></div>
+          <div class="pub-authors">
+            {% for author in paper.authors %}
+              {% if author contains "Alnemari" %}<span class="me">{{ author }}</span>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </div>
+          <div class="pub-venue">arXiv:{{ paper.arxiv_id }} &middot; {{ paper.primary_category }}</div>
+          <div class="pub-desc" style="margin-top:0.4rem;">{{ paper.abstract }}</div>
+          <div class="pub-meta">
+            <a href="{{ paper.abs_url }}" class="pub-tag pub-tag-link"><i class="ai ai-arxiv"></i> arXiv</a>
+            {% if paper.pdf_url %}
+            <a href="{{ paper.pdf_url }}" class="pub-tag pub-tag-link"><i class="fas fa-file-pdf"></i> PDF</a>
+            {% endif %}
+            <span class="pub-tag" style="background:rgba(99,102,241,0.08);color:var(--text-muted);">{{ paper.date }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+{% endif %}
 
 <!-- ═══════════ LAB ═══════════ -->
 <section id="lab">
