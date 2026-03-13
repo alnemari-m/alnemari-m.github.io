@@ -1,62 +1,65 @@
-- id: "recognition"
+- id: "edge_dnn"
   title: "Efficient Deep Neural Networks for Edge Computing"
-  venue: "IEEE EDGE 2019"
-  description: "This paper proposes a novel idea of combining filter pruning with tensor decomposition to reduce the computational complexity of deep neural networks."
-  project_page: "https://doi.org/10.1109/TAFFC.2022.1234567"
-  arxiv: "https://ieeexplore.ieee.org/abstract/document/8812185/"
+  venue: "IEEE International Conference on Edge Computing (EDGE), 2019"
+  description: "Combines filter pruning with tensor decomposition to reduce computational complexity of DNNs for deployment on resource-constrained edge devices."
+  project_page: "https://ieeexplore.ieee.org/abstract/document/8812185/"
+  pdf: "https://ieeexplore.ieee.org/abstract/document/8812185/"
+  arxiv: ""
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - "mohammed_alnemari"
+    - alnemari
   awards: ["Best Paper Award"]
 
 - id: "storage_efficient_ensemble"
   title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized Convolutional Neural Networks"
   venue: "PeerJ Computer Science, 2022"
-  description: "This paper proposes a storage-efficient ensemble classification to overcome the low inference accuracy of binary neural networks (BNNs)."
+  description: "Proposes a storage-efficient ensemble classification method that overcomes the low inference accuracy of binary neural networks (BNNs) through filter sharing across ensemble members."
   project_page: "https://doi.org/10.7717/peerj-cs.924"
+  pdf: "https://doi.org/10.7717/peerj-cs.924"
   arxiv: ""
   image: "ensemble_before.jpg"
   image_mouseover: "ensemble_after.mp4"
   authors:
-    - "HJ Kim"
-
+    - alnemari
+    - hjkim
   awards: []
 
-- id: "two_stage_efficient_cnn"
+- id: "two_stage_eeg"
   title: "A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition"
   venue: "IEEE International Conference on Industrial Technology (ICIT)"
-  description: "This paper proposes a novel two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while keeping the model size small and computationally efficient."
+  description: "Introduces a two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while maintaining small model size and computational efficiency."
   project_page: "https://alnemari-m.github.io/3d_EGG/"
-  arxiv: "https://arxiv.org/abs/2208.00883"
+  pdf: ""
+  arxiv: "2208.00883"
   image: "cnn_before.jpg"
   image_mouseover: "cnn_after.mp4"
   authors:
-    - "Mohammed Alnemari"
-
+    - alnemari
   awards: []
 
-- id: "integration_low_cost_eeg"
+- id: "eeg_iot"
   title: "Integration of a Low-Cost EEG Headset with The Internet of Things"
-  venue: "University of California, Irvine, 2017"
-  description: "This Master thesis focuses on integrating low-cost EEG headsets with IoT devices to control electronic devices through brain signals."
+  venue: "M.S. Thesis, University of California, Irvine, 2017"
+  description: "Integrates low-cost EEG headsets with IoT frameworks to enable brain-computer interfaces for controlling electronic devices through neural signals."
   project_page: "https://escholarship.org/uc/item/1bh7k9cg"
+  pdf: "https://escholarship.org/uc/item/1bh7k9cg"
   arxiv: ""
   image: "eeg_before.jpg"
   image_mouseover: "eeg_after.mp4"
   authors:
-    - "Mohammed Alnemari"
+    - alnemari
   awards: []
 
-- id: "neural_networks_for_embedded_systems"
+- id: "phd_dissertation"
   title: "Efficient Deep Neural Networks on the Edge"
-  venue: "University of California, Irvine, 2022"
-  description: "This dissertation explores the application of neural networks in embedded systems, highlighting techniques for optimizing performance and efficiency in resource-constrained environments."
+  venue: "Ph.D. Dissertation, University of California, Irvine, 2022"
+  description: "Investigates the combination of pruning, quantization, and tensor decomposition methods on state-of-the-art DNNs for efficient deployment on energy-constrained edge devices."
   project_page: "https://www.proquest.com/openview/654e3810c6fcfedc5a0b6f7049e049cf/1?pq-origsite=gscholar&cbl=18750&diss=y"
+  pdf: "https://www.proquest.com/openview/654e3810c6fcfedc5a0b6f7049e049cf/1?pq-origsite=gscholar&cbl=18750&diss=y"
   arxiv: ""
   image: "neural_network_embedded_systems_before.jpg"
   image_mouseover: "neural_network_embedded_systems_after.mp4"
   authors:
-    - "Mohammed Alnemari"
-  awards: [ ]
-
+    - alnemari
+  awards: []

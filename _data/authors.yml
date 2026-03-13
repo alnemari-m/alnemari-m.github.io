@@ -1,5 +1,12 @@
 alnemari:
-  first_name: mohammed
-  last_name: alnemari
-  website: https:/alnemari-m.github.io/
+  first_name: Mohammed
+  middle_name: H.
+  last_name: Alnemari
+  website: https://alnemari-m.github.io/
   is_me: true
+
+hjkim:
+  first_name: Hyungjun
+  last_name: Kim
+  website: ""
+  is_me: false

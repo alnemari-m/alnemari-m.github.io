@@ -2,139 +2,250 @@
 layout: null
 ---
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammed Alnemari — CV</title>
 
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <title>{{ site.title }}</title>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    function gtag() {
-      dataLayer.push(arguments);
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --text: #e4e4e7;
+      --text-muted: #9ca3af;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --border: #1e1e2e;
+      --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
     }
 
-    gtag('js', new Date());
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 3rem 2rem;
+    }
 
-    gtag('config', '{{ site.google_analytics }}');
-  </script>
+    .cv-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link href="./css/fontawesome.all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
-  <link href="./css/bulma.min.css" rel="stylesheet">
-  <link href="./css/cv.css" rel="stylesheet">
+    /* Header */
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--accent);
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script defer src="./js/fontawesome.all.min.js"></script>
+    .cv-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .cv-header h1 .gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cv-header .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 0.3rem;
+    }
+
+    .cv-header .links {
+      text-align: right;
+      font-size: 0.9rem;
+    }
+
+    .cv-header .links p {
+      margin-bottom: 0.3rem;
+    }
+
+    .cv-header .links a {
+      color: var(--accent-light);
+      text-decoration: none;
+    }
+
+    .cv-header .links a:hover { text-decoration: underline; }
+    .cv-header .links i { width: 20px; text-align: center; margin-right: 0.3rem; }
+
+    /* Sections */
+    .cv-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .cv-section h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-light);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cv-entry {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      gap: 2rem;
+    }
+
+    .cv-entry .main { flex: 1; }
+
+    .cv-entry .main strong {
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .cv-entry .main .role {
+      color: var(--accent-light);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .cv-entry .main .desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 0.3rem;
+    }
+
+    .cv-entry .meta {
+      text-align: right;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .award-tag {
+      display: inline-block;
+      background: rgba(245,158,11,0.15);
+      color: #f59e0b;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.3rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    @media print {
+      body { background: #fff; color: #111; padding: 1rem; font-size: 9pt; }
+      .cv-header h1, .cv-header h1 .gradient { color: #111; -webkit-text-fill-color: #111; }
+      .cv-section h2 { color: #333; }
+      .cv-entry .main .role { color: #555; }
+      .cv-entry .main .desc { color: #555; }
+      .back-link { display: none; }
+      a { color: #333; }
+    }
+  </style>
 </head>
-
 <body>
 
-  <section>
-    <div class="container is-max-desktop">
-      <div class="columns is-vcentered">
-        <div class="column">
-          <h1 class="title is-2">{{ site.name }}</h1>
-          <h1 class="subtitle is-5">{{ site.position }}</h1>
-        </div>
-        <div class="column is-narrow portrait-column">
-          <img class="portrait-image" src="./images/alnemari.jpeg" alt="A portrait of Alnemari Mohammed" />
-        </div>
-        <div class="column has-text-right">
-          <p>
-            <a href="{{ site.url }}">
-              <i class="fas fa-home"></i>
-              {% assign url_parts = site.url | split: "//" %}
-              {{ url_parts[1] }}
-            </a>
-          </p>
-          <p>
-            <a href="https://github.com/{{ site.github_username }}">
-              <i class="fab fa-github"></i>
-              {{ site.github_username }}
-            </a>
-          </p>
-          <p>
-            <a href="https://twitter.com/{{ site.twitter_username }}">
-              <i class="fab fa-twitter"></i>
-              {{ site.twitter_username }}
-            </a>
-          </p>
-          <p>
-            <a href="mailto:{{ site.email }}">
-              <i class="fas fa-envelope"></i>
-              {{ site.email }}
-            </a>
-          </p>
-        </div>
+<div class="cv-container">
+
+  <a href="./" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+  <div class="cv-header">
+    <div>
+      <h1>Mohammed <span class="gradient">Alnemari</span></h1>
+      <p class="subtitle">Assistant Professor & Chair, Computer Engineering<br>University of Tabuk &middot; AIST Research Center</p>
+    </div>
+    <div class="links">
+      <p><a href="https://alnemari-m.github.io/"><i class="fas fa-globe"></i> alnemari-m.github.io</a></p>
+      <p><a href="mailto:mnemari@ut.edu.sa"><i class="fas fa-envelope"></i> mnemari@ut.edu.sa</a></p>
+      <p><a href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ"><i class="ai ai-google-scholar"></i> Google Scholar</a></p>
+      <p><a href="https://orcid.org/0000-0002-5971-6703"><i class="ai ai-orcid"></i> 0000-0002-5971-6703</a></p>
+      <p><a href="https://github.com/alnemari-m"><i class="fab fa-github"></i> alnemari-m</a></p>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <h2>Education</h2>
+    {% for school in site.data.education %}
+    <div class="cv-entry">
+      <div class="main">
+        <strong>{{ school.name }}</strong>
+        <div class="desc">{{ school.description }}</div>
       </div>
+      <div class="meta">{{ school.dates }}</div>
+    </div>
+    {% endfor %}
+  </div>
 
-      <div class="content">
-        <h2>Education</h2>
-        {% for school in site.data.education %}
-        <div class="columns">
-          <div class="column is-four-fifths">
-            <b>{{ school.name }}</b><br />
-            {{ school.description }}
-          </div>
-          <div class="column is-one-fifths has-text-right">
-            {{ school.dates }}
-          </div>
-        </div>
-        {% endfor %}
+  <div class="cv-section">
+    <h2>Experience & Projects</h2>
+    {% for job in site.data.employment %}
+    <div class="cv-entry">
+      <div class="main">
+        <strong>{{ job.company }}</strong>
+        <div class="desc">{{ job.description }}</div>
+      </div>
+      <div class="meta">
+        {{ job.dates }}<br>{{ job.location }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 
-        <h2>Employment</h2>
-
-        {% for job in site.data.employment %}
-        <div class="columns">
-          <div class="column is-four-fifths">
-            <b>{{ job.company }}</b><br />
-            {{ job.description }}
-          </div>
-          <div class="column is-one-fifths has-text-right">
-            {{ job.dates }}
-            <br />
-            {{ job.location }}
-          </div>
-        </div>
-        {% endfor %}
-
-        <h2>Publications</h2>
-
-        {% for publication in site.data.publications %}
-        <div class="columns">
-          <div class="column is-four-fifths">
-            <a href="{{ publication.project_page }}"><b>{{ publication.title }}</b></a>
-            <div class="publication-authors">
-              {% for author_id in publication.authors %}
-              {% assign author = site.data.authors[author_id] %}
-              <span class="author-block {% if author.is_me %}author-me{% endif %}">
-                {% if author.is_me %}
-                {{ author.first_name | slice: 0 }}. {{ author.last_name }}{% if forloop.last == false %},{%
-                endif %}
-                {% else %}
-                <a href="{{ author.website }}">{{ author.first_name | slice: 0 }}. {{ author.last_name }}</a>{% if
-                forloop.last == false %},{% endif %}
-                {% endif %}
-              </span>
-              {% endfor %}
-            </div>
-            {{ publication.description }}
-          </div>
-          <div class="column is-one-fifths has-text-right">
-            {{ publication.venue }}
-          </div>
-        </div>
+  <div class="cv-section">
+    <h2>Selected Publications</h2>
+    {% for pub in site.data.publications %}
+    <div class="cv-entry">
+      <div class="main">
+        <strong><a href="{{ pub.project_page }}" style="color: var(--text); text-decoration: none;">{{ pub.title }}</a></strong>
+        <div class="role">{{ pub.venue }}</div>
+        <div class="desc">{{ pub.description }}</div>
+        {% for award in pub.awards %}
+        <span class="award-tag"><i class="fas fa-trophy"></i> {{ award }}</span>
         {% endfor %}
       </div>
     </div>
-  </section>
+    {% endfor %}
+  </div>
+
+  <div class="cv-section">
+    <h2>Research Interests</h2>
+    <div class="cv-entry">
+      <div class="main">
+        <div class="desc">Edge AI & TinyML &middot; Neural Network Compression (Pruning, Quantization, Tensor Decomposition) &middot; Hardware-Software Co-Design &middot; Conformal Prediction for ML &middot; Embedded Deep Learning &middot; Brain-Computer Interfaces &middot; Computer Vision</div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 </body>
-
 </html>

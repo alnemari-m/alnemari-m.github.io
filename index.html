@@ -2,202 +2,1059 @@
 layout: null
 ---
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammed Alnemari — Edge AI Researcher</title>
+  <meta name="description" content="Assistant Professor & Chair, Computer Engineering, University of Tabuk. Research in Edge AI, TinyML, Neural Network Compression.">
 
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <title>{{ site.name }}</title>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    function gtag() {
-      dataLayer.push(arguments);
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a2e;
+      --text: #e4e4e7;
+      --text-muted: #9ca3af;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --accent-glow: rgba(99,102,241,0.15);
+      --gold: #f59e0b;
+      --border: #1e1e2e;
+      --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
     }
 
-    gtag('js', new Date());
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    gtag('config', '{{ site.google_analytics }}');
-  </script>
+    html { scroll-behavior: smooth; }
 
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="{{ '/css/fontawesome.all.min.css' | relative_url }}" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
-  <link href="{{ '/css/bulma.min.css' | relative_url }}" rel="stylesheet">
-  <link href="{{ '/css/index.css' | relative_url }}" rel="stylesheet">
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script defer src="{{ '/js/fontawesome.all.min.js' | relative_url }}"></script>
-  <script src="{{ '/js/index.js' | relative_url }}"></script>
+    /* Animated gradient background */
+    .bg-glow {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 70%, rgba(139,92,246,0.06) 0%, transparent 50%);
+      animation: glowMove 20s ease-in-out infinite alternate;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes glowMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-5%, -5%); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 0;
+      backdrop-filter: blur(20px);
+      background: rgba(10,10,15,0.8);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    nav .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover { color: var(--accent-light); }
+
+    /* Sections */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    /* Hero Section */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+    }
+
+    .hero-image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 20px;
+      background: var(--gradient);
+      opacity: 0.6;
+      z-index: 0;
+      filter: blur(1px);
+    }
+
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 18px;
+      display: block;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-glow);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: var(--accent-light);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-name {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .hero-affiliation {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.3rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99,102,241,0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-card);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Stats Strip */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: -2rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(99,102,241,0.1);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Research Cards */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .research-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .research-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(99,102,241,0.1);
+    }
+
+    .research-card:hover::before { opacity: 1; }
+
+    .research-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--accent-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .research-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .research-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--border));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--accent);
+    }
+
+    .timeline-item.highlight::before {
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(99,102,241,0.5);
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-award {
+      display: inline-block;
+      background: rgba(245,158,11,0.15);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 5px;
+      margin-top: 0.3rem;
+    }
+
+    /* Publications */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem 2rem;
+      transition: all 0.3s;
+    }
+
+    .pub-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .pub-card .pub-venue {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent-light);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pub-card .pub-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .pub-card .pub-title a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .pub-card .pub-title a:hover { color: var(--accent-light); }
+
+    .pub-card .pub-authors {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-card .pub-authors .me { color: var(--text); font-weight: 600; }
+
+    .pub-card .pub-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .pub-card .pub-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .pub-card .pub-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--accent-light);
+      text-decoration: none;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .pub-card .pub-links a:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+    }
+
+    .pub-award-badge {
+      background: rgba(245,158,11,0.15);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Education */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .edu-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .edu-card .edu-degree {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-card .edu-school {
+      color: var(--accent-light);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-card .edu-dates {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-card .edu-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(99,102,241,0.1);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent-light);
+      background: var(--accent-glow);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .project-collab {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Contact / Footer */
+    .contact-section {
+      text-align: center;
+      padding: 5rem 0;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.3rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .contact-chip:hover {
+      border-color: var(--accent);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .contact-chip i { color: var(--accent-light); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+      .hero-image-wrapper { max-width: 250px; margin: 0 auto; }
+      .hero-name { font-size: 2.5rem; }
+      .hero-links { justify-content: center; }
+      .stats-strip { grid-template-columns: repeat(2, 1fr); }
+      .research-grid, .edu-grid, .projects-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.8rem; }
+      nav .nav-links { display: none; }
+      .contact-links { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 
 <body>
 
-  <section class="hero">
-    <div class="hero-body container is-max-desktop">
-      <div class="columns is-vcentered">
+<div class="bg-glow"></div>
 
-        <div class="column is-4">
-          <div class="portrait">
-            <img src="{{ '/images/alnemari.jpeg' | relative_url }}" />
-          </div>
-        </div>
-
-        <div class="column">
-          <h1 class="title">
-            <b>Hello, I'm {{ site.name }}</b>
-          </h1>
-          <div class="content has-text-justified">
-            {{ site.description | markdownify }}
-            <div class="buttons">
-              <a class="external-link button is-light" href="cv.html">
-                <span class="icon"><i class="fas fa-file"></i></span>
-                <span>CV</span>
-              </a>
-
-              <a class="external-link button is-light"
-                href="https://scholar.google.com/citations?user={{ site.google_scholar }}">
-                <span class="icon"><i class="ai ai-google-scholar"></i></span>
-                <span>Scholar</span>
-              </a>
-
-              <a class="external-link button is-light" href="https://github.com/{{ site.github_username }}">
-                <span class="icon"><i class="fab fa-github"></i></span>
-                <span>Github</span>
-              </a>
-
-              <a class="external-link button is-light" href="https://twitter.com/{{ site.twitter_username }}">
-                <span class="icon"><i class="fab fa-twitter"></i></span>
-                <span>Twitter</span>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- News. -->
-  <div class="hr">
-    <div class="container">
-      <hr>
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">M. Alnemari</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
+</nav>
 
-  <section class="section">
-    <div class="container is-max-desktop">
-
-      <!--<h2 class="title is-3">News</h2>
-      <div class="content">
-        <ul>
-          {% for news in site.data.news %}
-          <li>
-            <b>{{ news.date }}</b>: {{ news.description | markdownify | remove: '<p>' | remove: '</p>' }}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>-->
-
-      <h2 class="title is-3">Publications</h2>
-
-      {% for publication in site.data.publications %}
-      <div class="publication-block columns">
-
-        <div class="column is-2">
-          <div class="publication-image {% if publication.image_mouseover %}publication-mousecell{% endif %}">
-            {% if publication.image_mouseover contains "mp4" %}
-            <video autoplay preload playsinline class="" height="100%" loop muted width="100%">
-              <source src="./images/{{ publication.image_mouseover }}" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            {% endif %}
-            <img alt="{{ publication.title }}" src="./images/{{ publication.image }}" />
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content">
-            <h3 class="publication-title"><a href="{{ publication.project_page }}">{{ publication.title }}</a></h3>
-            <div class="publication-authors">
-              {% for author_id in publication.authors %}
-              {% assign author = site.data.authors[author_id] %}
-              <span class="author-block {% if author.is_me %}author-me{% endif %}">
-                {% if author.is_me %}
-                {{ author.first_name }} {{author.middle_name}} {{ author.last_name }}{% if forloop.last == false %},{%
-                endif %}
-                {% else %}
-                <a href="{{ author.website }}">{{ author.first_name }} {{ author.middle_name }} {{ author.last_name
-                  }}</a>{% if forloop.last == false %},{% endif %}
-                {% endif %}
-              </span>
-              {% endfor %}
-            </div>
-            <div class="publication-venue">
-              <span>{{ publication.venue }}</span>
-              {% for award in publication.awards %}
-                <span class="publication-venue-emph">{{ award }}<span>
-              {% endfor %}
-            </div>
-            <p class="publication-description">{{ publication.description }}</p>
-            <!-- Publication Links. -->
-            <div class="publication-links buttons field has-addons">
-              <a class="external-link button is-small is-ghost" href="{{ publication.project_page }}">
-                <span class="icon"><i class="fas fa-globe-asia"></i></span>
-                <span>Project Page</span>
-              </a>
-              <a class="external-link button is-small is-ghost" href="https://arxiv.org/pdf/{{ publication.arxiv }}.pdf">
-                <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                <span>PDF</span>
-              </a>
-              <a class="external-link button is-small is-ghost" href="https://arxiv.org/abs/{{ publication.arxiv }}">
-                <span class="icon"><i class="ai ai-arxiv"></i></span>
-                <span>arXiv</span>
-              </a>
-              {% if publication.github %}
-              <a class="external-link button is-small is-ghost" href="https://github.com/{{ publication.github }}">
-                <span class="icon"><i class="fa fab fa-github"></i></span>
-                <span>Code</span>
-              </a>
-              {% endif %}
-            </div>
-            <!--/ Publication Links. -->
-          </div>
-        </div>
+<!-- Hero -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-image-wrapper">
+        <img src="./images/alnemari.jpeg" alt="Mohammed Alnemari" class="hero-image">
       </div>
-      {% endfor %}
-    </div>
-  </section>
-
-
-  <footer class="footer">
-    <div class="container">
-      <div class="content footer-links has-text-centered">
-        <a href="mailto:{{ site.email }}">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a class="external-link" href="https://github.com/{{ site.github_username }}">
-          <i class="fab fa-github"></i>
-        </a>
-        <a class="external-link" href="https://scholar.google.com/citations?user={{ site.google_scholar }}">
-          <i class="ai ai-google-scholar"></i>
-        </a>
-      </div>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-8">
-          <div class="content">
-            <p>
-              Feel free to <a href="https://github.com/keunhong/keunhong.github.io">borrow this template</a>.
-            </p>
-          </div>
+      <div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Open to Research Collaborations
+        </div>
+        <h1 class="hero-name">
+          Mohammed<br><span class="gradient-text">Alnemari</span>
+        </h1>
+        <p class="hero-title">Assistant Professor & Chair, Computer Engineering</p>
+        <p class="hero-affiliation">University of Tabuk &middot; AIST Research Center &middot; Saudi Arabia</p>
+        <p class="hero-bio">
+          I build efficient deep learning systems that run on the edge. My research combines neural network compression (pruning, quantization, tensor decomposition) with statistical reliability guarantees to deploy AI on resource-constrained devices — from microcontrollers to embedded GPUs.
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ">
+            <i class="ai ai-google-scholar"></i> Google Scholar
+          </a>
+          <a class="btn btn-ghost" href="cv.html">
+            <i class="fas fa-file-alt"></i> CV
+          </a>
+          <a class="btn btn-ghost" href="https://orcid.org/0000-0002-5971-6703">
+            <i class="ai ai-orcid"></i> ORCID
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/alnemari-m">
+            <i class="fab fa-github"></i> GitHub
+          </a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- Stats -->
+<section style="padding-top: 0; padding-bottom: 4rem;">
+  <div class="container">
+    <div class="stats-strip fade-in">
+      <div class="stat-card">
+        <div class="stat-number">Ph.D.</div>
+        <div class="stat-label">UC Irvine — Computer Engineering</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Peer-Reviewed Publications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><i class="fas fa-trophy" style="font-size:1.8rem;"></i></div>
+        <div class="stat-label">IEEE EDGE Best Paper Award</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Industry & Government Projects</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Research Interests -->
+<section id="research">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// What I Work On</p>
+      <h2 class="section-title">Research Interests</h2>
+    </div>
+    <div class="research-grid">
+      <div class="research-card fade-in">
+        <div class="research-icon"><i class="fas fa-microchip"></i></div>
+        <h3>Edge AI & TinyML</h3>
+        <p>Deploying deep learning models on microcontrollers (ARM Cortex-M, RISC-V) and edge GPUs under strict latency, memory, and power budgets.</p>
+      </div>
+      <div class="research-card fade-in">
+        <div class="research-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+        <h3>Neural Network Compression</h3>
+        <p>Filter pruning, quantization, knowledge distillation, and tensor decomposition to reduce DNN computational complexity by 10-100x without sacrificing accuracy.</p>
+      </div>
+      <div class="research-card fade-in">
+        <div class="research-icon"><i class="fas fa-cogs"></i></div>
+        <h3>HW-SW Co-Design</h3>
+        <p>Joint optimization of neural architectures and hardware accelerators — including RRAM-based analog in-memory computing and FPGA-based inference engines.</p>
+      </div>
+      <div class="research-card fade-in">
+        <div class="research-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Conformal Prediction for ML</h3>
+        <p>Distribution-free statistical methods that provide coverage guarantees for compression hyperparameter selection, replacing expensive grid search with reliable surrogates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Publications -->
+<section id="publications">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// Selected Work</p>
+      <h2 class="section-title">Publications</h2>
+    </div>
+    <div class="pub-list">
+
+      <div class="pub-card fade-in">
+        <div class="pub-venue">
+          <span>IEEE EDGE 2019</span>
+          <span class="pub-award-badge"><i class="fas fa-trophy"></i> Best Paper Award</span>
+        </div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/8812185/">Efficient Deep Neural Networks for Edge Computing</a></div>
+        <div class="pub-authors"><span class="me">M. H. Alnemari</span></div>
+        <div class="pub-desc">Combines filter pruning with tensor decomposition to reduce computational complexity of DNNs for deployment on resource-constrained edge devices.</div>
+        <div class="pub-links">
+          <a href="https://ieeexplore.ieee.org/abstract/document/8812185/"><i class="fas fa-file-pdf"></i> IEEE Xplore</a>
+        </div>
+      </div>
+
+      <div class="pub-card fade-in">
+        <div class="pub-venue">PeerJ Computer Science, 2022</div>
+        <div class="pub-title"><a href="https://doi.org/10.7717/peerj-cs.924">A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized CNNs</a></div>
+        <div class="pub-authors"><span class="me">M. H. Alnemari</span>, H. Kim</div>
+        <div class="pub-desc">Storage-efficient ensemble classification that overcomes low inference accuracy of binary neural networks through filter sharing across ensemble members.</div>
+        <div class="pub-links">
+          <a href="https://doi.org/10.7717/peerj-cs.924"><i class="fas fa-file-pdf"></i> Paper</a>
+        </div>
+      </div>
+
+      <div class="pub-card fade-in">
+        <div class="pub-venue">IEEE International Conference on Industrial Technology (ICIT)</div>
+        <div class="pub-title"><a href="https://alnemari-m.github.io/3d_EGG/">A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition</a></div>
+        <div class="pub-authors"><span class="me">M. H. Alnemari</span></div>
+        <div class="pub-desc">Two-stage framework for emotion recognition using EEG data that outperforms SOTA while maintaining small model size and computational efficiency.</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2208.00883"><i class="ai ai-arxiv"></i> arXiv</a>
+          <a href="https://alnemari-m.github.io/3d_EGG/"><i class="fas fa-globe"></i> Project</a>
+        </div>
+      </div>
+
+      <div class="pub-card fade-in">
+        <div class="pub-venue">Ph.D. Dissertation — UC Irvine, 2022</div>
+        <div class="pub-title"><a href="https://www.proquest.com/openview/654e3810c6fcfedc5a0b6f7049e049cf/1?pq-origsite=gscholar&cbl=18750&diss=y">Efficient Deep Neural Networks on the Edge</a></div>
+        <div class="pub-authors"><span class="me">M. H. Alnemari</span></div>
+        <div class="pub-desc">Investigates combining pruning, quantization, and tensor decomposition for efficient DNN deployment on energy-constrained edge devices.</div>
+        <div class="pub-links">
+          <a href="https://www.proquest.com/openview/654e3810c6fcfedc5a0b6f7049e049cf/1?pq-origsite=gscholar&cbl=18750&diss=y"><i class="fas fa-file-pdf"></i> ProQuest</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Experience / Timeline -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// Career & Projects</p>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline fade-in">
+
+      <div class="timeline-item highlight">
+        <div class="timeline-date">2023 — Present</div>
+        <div class="timeline-title">Jellyfish Detection & Desalination Risk Assessment</div>
+        <div class="timeline-desc">AIST Center, University of Tabuk + SWCC. AI and sensing techniques to detect jellyfish and assess risks at desalination plants.</div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-title">RRAM Crossbar Analog In-Memory AI Accelerator</div>
+        <div class="timeline-desc">University of Tabuk + UC Irvine. Designed AI accelerator SoC with non-volatile resistive memory and fault-tolerant neural architectures.</div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="timeline-date">2022 — Present</div>
+        <div class="timeline-title">Chair, Computer Engineering Department</div>
+        <div class="timeline-desc">University of Tabuk. Leading the department, managing curriculum, and driving research initiatives.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022 — 2023</div>
+        <div class="timeline-title">AI & Life Sciences Initiative with NEOM</div>
+        <div class="timeline-desc">Project Leader. Led team of 4 researchers developing AI solutions for life sciences in collaboration with NEOM.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022</div>
+        <div class="timeline-title">WaterBacteria Research Initiative</div>
+        <div class="timeline-desc">Team Leader. Led 15 assistant professors using AI to modify bacterial genetics for water production in arid environments.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2021</div>
+        <div class="timeline-title">AI Engineer Intern — InterDigital</div>
+        <div class="timeline-desc">Built DNN models for image and video compression, optimizing neural network performance for compression efficiency.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2017 — 2022</div>
+        <div class="timeline-title">Ph.D. in Computer Engineering — UC Irvine</div>
+        <div class="timeline-desc">Dissertation: "Efficient Deep Neural Networks on the Edge." Pruning, quantization, tensor decomposition for edge deployment.</div>
+        <div class="timeline-award"><i class="fas fa-trophy"></i> IEEE EDGE 2019 Best Paper Award</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2018</div>
+        <div class="timeline-title">Summer Program — Tokyo Institute of Technology</div>
+        <div class="timeline-desc">DNN models for self-driving cars on FPGA for real-time automotive inference.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2016</div>
+        <div class="timeline-title">Summer Researcher — National Taiwan University (Intel)</div>
+        <div class="timeline-desc">IoT framework development with EEG module, sponsored by Intel.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Education -->
+<section id="education">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// Academic Background</p>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <div class="edu-degree">Ph.D. in Computer Engineering</div>
+        <div class="edu-school">University of California, Irvine</div>
+        <div class="edu-dates">2017 — 2022</div>
+        <div class="edu-desc">Dissertation: "Efficient Deep Neural Networks on the Edge." Pruning, quantization, and tensor decomposition for low-energy devices.</div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-degree">M.S. in Computer Engineering</div>
+        <div class="edu-school">University of California, Irvine</div>
+        <div class="edu-dates">2014 — 2016</div>
+        <div class="edu-desc">Thesis: "Integration of a Low Cost EEG Headset with the Internet of Things Framework."</div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-degree">B.Sc. in Computer Engineering</div>
+        <div class="edu-school">Taif University</div>
+        <div class="edu-dates">2006 — 2011</div>
+        <div class="edu-desc">Graduated with second honors.</div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-degree">Certificate in Game Programming</div>
+        <div class="edu-school">University of Southern California</div>
+        <div class="edu-dates">2024</div>
+        <div class="edu-desc">Unreal Engine 5 and Unity game development projects.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Contact -->
+<section id="contact" class="contact-section">
+  <div class="container fade-in">
+    <p class="section-label">// Get In Touch</p>
+    <h2 class="section-title">Let's Collaborate</h2>
+    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+      I'm always open to research collaborations, speaking invitations, and industry partnerships — especially in Edge AI, TinyML, and neural network compression.
+    </p>
+    <div class="contact-links">
+      <a class="contact-chip" href="mailto:mnemari@ut.edu.sa">
+        <i class="fas fa-envelope"></i> mnemari@ut.edu.sa
+      </a>
+      <a class="contact-chip" href="https://scholar.google.com/citations?user=ukW6rG0AAAAJ">
+        <i class="ai ai-google-scholar"></i> Google Scholar
+      </a>
+      <a class="contact-chip" href="https://orcid.org/0000-0002-5971-6703">
+        <i class="ai ai-orcid"></i> ORCID
+      </a>
+      <a class="contact-chip" href="https://github.com/alnemari-m">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Mohammed Alnemari &middot; University of Tabuk, Saudi Arabia</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Navbar background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.borderBottomColor = 'rgba(99,102,241,0.2)';
+    } else {
+      nav.style.borderBottomColor = 'var(--border)';
+    }
+  });
+</script>
 
 </body>
-
 </html>
