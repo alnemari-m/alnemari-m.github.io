@@ -1,65 +1,83 @@
-- id: "edge_dnn"
-  title: "Efficient Deep Neural Networks for Edge Computing"
-  venue: "IEEE International Conference on Edge Computing (EDGE), 2019"
-  description: "Combines filter pruning with tensor decomposition to reduce computational complexity of DNNs for deployment on resource-constrained edge devices."
-  project_page: "https://ieeexplore.ieee.org/abstract/document/8812185/"
-  pdf: "https://ieeexplore.ieee.org/abstract/document/8812185/"
-  arxiv: ""
-  image: "cnn_before.jpg"
-  image_mouseover: "cnn_after.mp4"
+- id: "equivariant_pruning"
+  title: "Equivariant-Aware Structured Pruning for Efficient Edge Deployment"
+  venue: "IEEE EdgeCom 2025 & arXiv:2511.17242"
+  year: 2025
   authors:
     - alnemari
-  awards: ["Best Paper Award"]
-
-- id: "storage_efficient_ensemble"
-  title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized Convolutional Neural Networks"
-  venue: "PeerJ Computer Science, 2022"
-  description: "Proposes a storage-efficient ensemble classification method that overcomes the low inference accuracy of binary neural networks (BNNs) through filter sharing across ensemble members."
-  project_page: "https://doi.org/10.7717/peerj-cs.924"
-  pdf: "https://doi.org/10.7717/peerj-cs.924"
-  arxiv: ""
-  image: "ensemble_before.jpg"
-  image_mouseover: "ensemble_after.mp4"
-  authors:
-    - alnemari
-    - hjkim
   awards: []
 
-- id: "two_stage_eeg"
+- id: "fir_filter"
+  title: "An Innovative Finite Impulse Response Filter Design Using a Combination of L1/L2 Regularization"
+  venue: "Electronics, vol. 14, no. 22, p. 4386, 2025"
+  year: 2025
+  authors:
+    - alnemari
+  awards: []
+
+- id: "tinyml_edge"
+  title: "TinyML & Edge AI: Bringing Intelligence to the Edge"
+  venue: "GitHub Repository, 2025"
+  year: 2025
+  authors:
+    - alnemari
+  awards: []
+
+- id: "ultimate_compression"
+  title: "Ultimate Compression: Joint Method of Quantization and Tensor Decomposition for Compact Models on the Edge"
+  venue: "Applied Sciences, vol. 14, no. 20, p. 9354, 2024"
+  year: 2024
+  authors:
+    - alnemari
+  awards: []
+
+- id: "energy_management"
+  title: "AI-Enabled Energy Management Device for Sustainable Quality of Life"
+  venue: "2023 Saudi Arabia Smart Grid (SASG), pp. 1-7"
+  year: 2023
+  authors:
+    - alnemari
+  awards: []
+
+- id: "eeg_emotion"
   title: "A Two-Stage Efficient 3-D CNN Framework for EEG-Based Emotion Recognition"
-  venue: "IEEE International Conference on Industrial Technology (ICIT)"
-  description: "Introduces a two-stage framework for emotion recognition using EEG data that outperforms state-of-the-art models while maintaining small model size and computational efficiency."
-  project_page: "https://alnemari-m.github.io/3d_EGG/"
-  pdf: ""
-  arxiv: "2208.00883"
-  image: "cnn_before.jpg"
-  image_mouseover: "cnn_after.mp4"
-  authors:
-    - alnemari
-  awards: []
-
-- id: "eeg_iot"
-  title: "Integration of a Low-Cost EEG Headset with The Internet of Things"
-  venue: "M.S. Thesis, University of California, Irvine, 2017"
-  description: "Integrates low-cost EEG headsets with IoT frameworks to enable brain-computer interfaces for controlling electronic devices through neural signals."
-  project_page: "https://escholarship.org/uc/item/1bh7k9cg"
-  pdf: "https://escholarship.org/uc/item/1bh7k9cg"
-  arxiv: ""
-  image: "eeg_before.jpg"
-  image_mouseover: "eeg_after.mp4"
+  venue: "IEEE ICIT 2022"
+  year: 2022
+  project_page: "https://arxiv.org/abs/2208.00883"
   authors:
     - alnemari
   awards: []
 
 - id: "phd_dissertation"
   title: "Efficient Deep Neural Networks on the Edge"
-  venue: "Ph.D. Dissertation, University of California, Irvine, 2022"
-  description: "Investigates the combination of pruning, quantization, and tensor decomposition methods on state-of-the-art DNNs for efficient deployment on energy-constrained edge devices."
-  project_page: "https://www.proquest.com/openview/654e3810c6fcfedc5a0b6f7049e049cf/1?pq-origsite=gscholar&cbl=18750&diss=y"
-  pdf: "https://www.proquest.com/openview/654e3810c6fcfedc5a0b6f7049e049cf/1?pq-origsite=gscholar&cbl=18750&diss=y"
-  arxiv: ""
-  image: "neural_network_embedded_systems_before.jpg"
-  image_mouseover: "neural_network_embedded_systems_after.mp4"
+  venue: "Ph.D. Dissertation, UC Irvine, 2022"
+  year: 2022
+  authors:
+    - alnemari
+  awards: []
+
+- id: "bnn_ensemble"
+  title: "A Storage-Efficient Ensemble Classification Using Filter Sharing on Binarized CNNs"
+  venue: "PeerJ Computer Science, vol. 8, e924, 2022"
+  year: 2022
+  project_page: "https://doi.org/10.7717/peerj-cs.924"
+  authors:
+    - alnemari
+  awards: []
+
+- id: "edge_dnn"
+  title: "Efficient Deep Neural Networks for Edge Computing"
+  venue: "IEEE EDGE 2019"
+  year: 2019
+  project_page: "https://ieeexplore.ieee.org/abstract/document/8812185/"
+  authors:
+    - alnemari
+  awards: ["Best Paper Award"]
+
+- id: "eeg_iot"
+  title: "Integration of a Low-Cost EEG Headset with the Internet of Things Framework"
+  venue: "M.S. Thesis, UC Irvine, 2017"
+  year: 2017
+  project_page: "https://escholarship.org/uc/item/1bh7k9cg"
   authors:
     - alnemari
   awards: []
