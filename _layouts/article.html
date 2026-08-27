@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}" {% if page.lang == 'ar' %}dir="rtl"{% endif %}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} // Mohammed Alnemari</title>
+  <meta name="description" content="{{ page.description | default: page.title }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg-card: #0e0e16;
+      --bg-terminal: #0c0c14;
+      --text: #c9d1d9;
+      --text-bright: #e6edf3;
+      --text-dim: #7d8590;
+      --text-muted: #484f58;
+      --green: #00ff9d;
+      --green-glow: rgba(0,255,157,0.08);
+      --cyan: #00e5ff;
+      --amber: #f59e0b;
+      --border: rgba(0,255,157,0.08);
+      --border-hover: rgba(0,255,157,0.25);
+      --mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --sans: 'Space Grotesk', 'Inter', sans-serif;
+      --arabic: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    html[dir="rtl"] body { font-family: var(--arabic); }
+
+    ::selection { background: var(--green); color: #000; }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,255,157,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,157,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 0.6rem 0;
+      backdrop-filter: blur(20px) saturate(1.5);
+      background: rgba(10,10,12,0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--green);
+      text-decoration: none;
+      text-shadow: 0 0 20px rgba(0,255,157,0.3);
+    }
+    .logo::before { content: '> '; opacity: 0.5; }
+
+    .nav-links { display: flex; gap: 0.2rem; align-items: center; }
+
+    .nav-links a {
+      font-family: var(--mono);
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--green);
+      background: var(--green-glow);
+    }
+    .nav-links a::before { content: './'; opacity: 0.4; font-size: 0.7rem; }
+
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 8rem 2rem 5rem;
+    }
+
+    .article-meta {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.4rem;
+      direction: ltr;
+    }
+    html[dir="rtl"] .article-meta { justify-content: flex-start; direction: rtl; }
+
+    .article-meta .date { color: var(--green); }
+
+    .lang-badge {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      background: rgba(0,229,255,0.08);
+      color: var(--cyan);
+      border: 1px solid rgba(0,229,255,0.2);
+    }
+
+    .translation-link {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--amber);
+      text-decoration: none;
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(245,158,11,0.06);
+      transition: all 0.3s;
+    }
+    .translation-link:hover { border-color: var(--amber); background: rgba(245,158,11,0.12); }
+
+    h1.article-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-bright);
+      margin-bottom: 0.8rem;
+    }
+    html[dir="rtl"] h1.article-title { letter-spacing: 0; line-height: 1.4; }
+
+    .article-desc {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      border-inline-start: 2px solid var(--green);
+      padding-inline-start: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .article-body { font-size: 1.02rem; color: var(--text); }
+    html[dir="rtl"] .article-body { font-size: 1.08rem; line-height: 2.1; }
+
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin: 2.8rem 0 1rem;
+      padding-top: 1rem;
+    }
+    .article-body h2::before {
+      content: '// ';
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+    .article-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin: 2rem 0 0.8rem;
+    }
+    .article-body p { margin-bottom: 1.3rem; }
+    .article-body strong { color: var(--text-bright); }
+    .article-body em { color: var(--cyan); font-style: normal; }
+    .article-body a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(0,255,157,0.3); }
+    .article-body a:hover { border-bottom-color: var(--green); }
+    .article-body ul, .article-body ol { margin: 0 0 1.3rem; padding-inline-start: 1.6rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body blockquote {
+      border-inline-start: 3px solid var(--green);
+      background: var(--bg-card);
+      padding: 1rem 1.4rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1.6rem 0;
+      color: var(--text-dim);
+    }
+    html[dir="rtl"] .article-body blockquote { border-radius: 6px 0 0 6px; }
+    .article-body code {
+      font-family: var(--mono);
+      font-size: 0.85em;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.12em 0.4em;
+      color: var(--cyan);
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+    .article-body pre {
+      background: var(--bg-terminal);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.2rem 1.4rem;
+      overflow-x: auto;
+      margin: 1.6rem 0;
+      direction: ltr;
+      text-align: left;
+    }
+    .article-body pre code { background: none; border: none; padding: 0; color: var(--text); }
+    .article-body img { max-width: 100%; border-radius: 6px; border: 1px solid var(--border); }
+    .article-body hr {
+      border: none;
+      height: 1px;
+      margin: 2.5rem 0;
+      background: linear-gradient(to right, transparent, var(--border-hover), transparent);
+    }
+
+    .article-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--green); }
+
+    .author-sig {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 700px) {
+      h1.article-title { font-size: 1.9rem; }
+      main { padding-top: 6.5rem; }
+      .nav-links a { padding: 0.4rem 0.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="grid-overlay"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="{{ '/' | relative_url }}">m.alnemari</a>
+    <div class="nav-links">
+      <a href="{{ '/' | relative_url }}">home</a>
+      <a href="{{ '/articles.html' | relative_url }}">articles</a>
+      <a href="{{ '/cv.html' | relative_url }}">cv</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <article>
+    <div class="article-meta">
+      <span class="date">{{ page.date | date: "%Y-%m-%d" }}</span>
+      <span class="lang-badge">{% if page.lang == 'ar' %}العربية{% else %}ENGLISH{% endif %}</span>
+      {% if page.translation %}
+        <a class="translation-link" href="{{ page.translation | relative_url }}">
+          {% if page.lang == 'ar' %}Read in English{% else %}اقرأ بالعربية{% endif %}
+        </a>
+      {% endif %}
+    </div>
+
+    <h1 class="article-title">{{ page.title }}</h1>
+
+    {% if page.description %}
+      <p class="article-desc">{{ page.description }}</p>
+    {% endif %}
+
+    <div class="article-body">
+      {{ content }}
+    </div>
+  </article>
+
+  <div class="article-footer">
+    <a class="back-link" href="{{ '/articles.html' | relative_url }}">
+      {% if page.lang == 'ar' %}← جميع المقالات{% else %}← all articles{% endif %}
+    </a>
+    <span class="author-sig">© Mohammed Alnemari</span>
+  </div>
+</main>
+
+</body>
+</html>

@@ -16,5 +16,17 @@ theme: minima
 plugins:
   - jekyll-feed
 
+collections:
+  articles:
+    output: true
+    permalink: /articles/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: article
+
 sass:
   style: compress
